@@ -149,7 +149,7 @@ function tryGenerate(): BoardData | null {
   return buildBoard({ startNodeId: 'start', endNodeId: 'end', nodes, edges });
 }
 
-function generateBoard(): BoardData {
+export function generateBoard(): BoardData {
   for (;;) {
     const board = tryGenerate();
     if (board) return board;

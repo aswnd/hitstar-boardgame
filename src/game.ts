@@ -3,7 +3,7 @@ import type {
   Player, PlayerAnswer, Song, ClientMessage,
   PublicGameState, GamePhase, TileColor, Category, Item, ItemType,
 } from './types';
-import { defaultBoard } from './board';
+import { defaultBoard, generateBoard } from './board';
 import rawSongs from '../songs.json';
 
 const SONGS: Song[] = (rawSongs as Omit<Song, 'id'>[]).map((s, i) => ({ ...s, id: String(i) }));
@@ -47,6 +47,9 @@ export class Game {
   private wsToPlayer = new Map<string, string>();
   private playerToWs = new Map<string, string>();
   private timerTimeout: ReturnType<typeof setTimeout> | null = null;
+
+  // The active board. Regenerated on reset so every new game gets a fresh map.
+  private board = defaultBoard;
 
   private state: GameState = {
     phase: 'lobby',
@@ -108,7 +111,48 @@ export class Game {
       case 'tile_cursor':               return this.handleTileCursor(ws, msg.tileId);
       case 'set_min_year':              return this.handleSetMinYear(ws, msg.year);
       case 'song_ended':                return this.handleSongEnded();
+      case 'reset_game':                return this.handleResetGame(ws);
     }
+  }
+
+  // Host-only full reset. Wipes all state back to a fresh lobby and drops
+  // every connection, so all devices reload into a clean game — the online
+  // equivalent of restarting the server locally.
+  private handleResetGame(ws: WS) {
+    const player = this.getPlayer(ws);
+    if (!player?.isHost) return;
+
+    if (this.timerTimeout) { clearTimeout(this.timerTimeout); this.timerTimeout = null; }
+
+    // Fresh random map, just like a server restart used to produce.
+    this.board = generateBoard();
+
+    this.state = {
+      phase: 'lobby',
+      players: {},
+      currentSong: null,
+      answers: {},
+      timerEnd: null,
+      pendingPathChoices: {},
+      usedSongIds: [],
+      readyPlayers: new Set(),
+      countdownEnd: null,
+      tileOverrides: {},
+      tileCursors: {},
+      takenEmojis: [],
+      animationFired: false,
+      minYear: 1900,
+      stuckRounds: {},
+    };
+
+    this.wsToPlayer.clear();
+    this.playerToWs.clear();
+
+    // Close every socket; clients auto-reload (controller.html / tv.html
+    // onclose) and reconnect into the fresh lobby.
+    const sockets = [...this.connections.values()];
+    this.connections.clear();
+    for (const sock of sockets) sock.close();
   }
 
   private handleJoin(ws: WS, name: string, avatarImage?: string, avatarEmoji?: string) {
@@ -142,7 +186,7 @@ export class Game {
       id: playerId,
       name: trimmed,
       isHost,
-      tileId: defaultBoard.startTileId,
+      tileId: this.board.startTileId,
       avatarColor: AVATAR_COLORS[colorIndex],
       avatarImage,
       connected: true,
@@ -182,13 +226,13 @@ export class Game {
     if (!player) return;
 
     if (this.state.phase === 'path_selection') {
-      const startTile = defaultBoard.tiles[defaultBoard.startTileId];
+      const startTile = this.board.tiles[this.board.startTileId];
       if (!startTile.nextTiles.includes(tileId)) return;
 
       player.tileId = tileId;
 
       const allChosen = Object.values(this.state.players)
-        .every(p => p.tileId !== defaultBoard.startTileId);
+        .every(p => p.tileId !== this.board.startTileId);
       if (allChosen) this.state.phase = 'playing';
 
       this.broadcast();
@@ -259,7 +303,7 @@ export class Game {
     for (const pid of playerIds) {
       const p = this.state.players[pid];
       if (!p) continue;
-      const tile = defaultBoard.tiles[p.tileId];
+      const tile = this.board.tiles[p.tileId];
       if (!tile) continue;
 
       // Moving — reset stuck counter
@@ -292,15 +336,15 @@ export class Game {
   }
 
   private distanceToEnd(tileId: string): number {
-    if (tileId === defaultBoard.endTileId) return 0;
+    if (tileId === this.board.endTileId) return 0;
     const visited = new Set<string>();
     const queue: Array<[string, number]> = [[tileId, 0]];
     while (queue.length > 0) {
       const [cur, dist] = queue.shift()!;
       if (visited.has(cur)) continue;
       visited.add(cur);
-      for (const next of defaultBoard.tiles[cur]?.nextTiles ?? []) {
-        if (next === defaultBoard.endTileId) return dist + 1;
+      for (const next of this.board.tiles[cur]?.nextTiles ?? []) {
+        if (next === this.board.endTileId) return dist + 1;
         queue.push([next, dist + 1]);
       }
     }
@@ -357,8 +401,8 @@ export class Game {
     if (!player || this.state.phase !== 'advancing') return;
 
     // Can't change start or end tile
-    if (tileId === defaultBoard.startTileId || tileId === defaultBoard.endTileId) return;
-    if (!defaultBoard.tiles[tileId]) return;
+    if (tileId === this.board.startTileId || tileId === this.board.endTileId) return;
+    if (!this.board.tiles[tileId]) return;
 
     const idx = player.inventory.findIndex(i => i.id === itemId);
     if (idx === -1) return;
@@ -375,7 +419,7 @@ export class Game {
     if (tileId === null) {
       delete this.state.tileCursors[player.id];
     } else {
-      if (!defaultBoard.tiles[tileId]) return;
+      if (!this.board.tiles[tileId]) return;
       this.state.tileCursors[player.id] = tileId;
     }
     this.broadcast();
@@ -498,7 +542,7 @@ export class Game {
 
   private checkWinner() {
     return Object.values(this.state.players).some(
-      p => p.tileId === defaultBoard.endTileId
+      p => p.tileId === this.board.endTileId
     );
   }
 
@@ -522,13 +566,13 @@ export class Game {
     // Apply tile overrides to the board before broadcasting.
     // Color is always derived from category so board.json color fields are ignored.
     const tiles = Object.fromEntries(
-      Object.entries(defaultBoard.tiles).map(([id, tile]) => {
+      Object.entries(this.board.tiles).map(([id, tile]) => {
         const ov = tileOverrides[id];
         const base = { ...tile, color: CAT_COLOR[tile.category] ?? tile.color };
         return [id, ov ? { ...base, ...ov } : base];
       })
     );
-    const board = { ...defaultBoard, tiles };
+    const board = { ...this.board, tiles };
 
     let song: Partial<Song> | null = null;
     if (currentSong) {

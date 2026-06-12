@@ -149,6 +149,16 @@
     border-radius: 20px;
     padding: 2px 10px;
   }
+  #reset-btn {
+    margin-left: 8px;
+    font-size: 0.75rem;
+    background: #e74c3c22;
+    color: #e74c3c;
+    border: 1px solid #e74c3c44;
+    border-radius: 20px;
+    padding: 2px 10px;
+    cursor: pointer;
+  }
 
   #phase-content {
     flex: 1;
@@ -554,6 +564,7 @@
     <div id="player-avatar"></div>
     <div id="player-name-label"></div>
     <div id="host-badge" style="display:none">👑 HOST</div>
+    <button id="reset-btn" style="display:none">⟳ Reset</button>
   </div>
   <div id="phase-content"></div>
 </div>
@@ -655,7 +666,7 @@ let draftAnswer  = '';
 let itemFlow = null; // { type, itemId, step?, tileId? }
 let confettiFired = false;
 
-const ws = new WebSocket(`ws://${location.host}/ws`);
+const ws = new WebSocket(`${location.protocol === 'https:' ? 'wss' : 'ws'}://${location.host}/ws`);
 
 ws.onopen = () => {
   if (myPlayerId) {
@@ -719,6 +730,12 @@ document.getElementById('name-input').addEventListener('keydown', e => {
   if (e.key === 'Enter') joinGame();
 });
 
+document.getElementById('reset-btn').addEventListener('click', () => {
+  if (confirm('Reset the game for everyone? All players will return to the lobby.')) {
+    send({ type: 'reset_game' });
+  }
+});
+
 // ── Rendering ──
 
 function myPlayer() {
@@ -745,6 +762,7 @@ function render() {
     }
     document.getElementById('player-name-label').textContent = p.name;
     document.getElementById('host-badge').style.display = p.isHost ? 'block' : 'none';
+    document.getElementById('reset-btn').style.display = p.isHost ? 'block' : 'none';
   }
 
   const content = document.getElementById('phase-content');

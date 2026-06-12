@@ -1,0 +1,10 @@
+# Don't ship local-only artifacts into the image.
+# NOTE: previews/ is intentionally NOT ignored — the song files
+# must be baked into the image so the server can serve them.
+node_modules
+.git
+.gitignore
+Dockerfile
+.dockerignore
+fly.toml
+*.log

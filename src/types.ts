@@ -95,4 +95,5 @@ export type ClientMessage =
   | { type: 'use_item_change_tile'; itemId: string; tileId: string; newCategory: Category }
   | { type: 'tile_cursor'; tileId: string | null }
   | { type: 'set_min_year'; year: number }
-  | { type: 'song_ended' };
+  | { type: 'song_ended' }
+  | { type: 'reset_game' };
