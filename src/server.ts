@@ -39,20 +39,6 @@ serve({
       return new Response(Bun.file(join(ROOT, 'public/tv.html')));
     }
 
-    if (url.pathname === '/react' || url.pathname === '/controller-react') {
-      return new Response(Bun.file(join(ROOT, 'public/react-app.html')));
-    }
-
-    if (url.pathname === '/tv-react') {
-      return new Response(Bun.file(join(ROOT, 'public/tv-react.html')));
-    }
-
-    if (url.pathname.startsWith('/react/')) {
-      const file = Bun.file(join(ROOT, 'public', url.pathname));
-      if (await file.exists()) return new Response(file);
-      return new Response('Not found', { status: 404 });
-    }
-
     if (url.pathname.startsWith('/songs/') || url.pathname.startsWith('/previews/')) {
       const file = Bun.file(join(ROOT, url.pathname));
       if (!await file.exists()) return new Response('Not found', { status: 404 });
@@ -110,5 +96,3 @@ serve({
 console.log(`Hitstar running on http://localhost:${PORT}`);
 console.log(`  TV:              http://${LOCAL_IP}:${PORT}/tv`);
 console.log(`  Controller:      http://${LOCAL_IP}:${PORT}/`);
-console.log(`  React TV:         http://${LOCAL_IP}:${PORT}/tv-react`);
-console.log(`  React Controller: http://${LOCAL_IP}:${PORT}/react`);
