@@ -7,7 +7,11 @@ WORKDIR /app
 COPY package.json bun.lock ./
 RUN bun install --frozen-lockfile --production
 
-# Copy the rest of the app, including the song previews (~351 MB)
+# Copy the song previews first (~351 MB) so this heavy layer stays cached
+# and is only rebuilt when the previews themselves change, not on code edits.
+COPY previews/ ./previews/
+
+# Copy the rest of the app
 COPY . .
 
 ENV PORT=3000
