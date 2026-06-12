@@ -750,6 +750,15 @@ function myTile() {
 function render() {
   if (!state) return;
 
+  // While answering and not yet locked in, the answer <input> is on screen and
+  // focused. ANY DOM mutation here — recreating the input, or even rewriting the
+  // header avatar/labels below — can make the phone keyboard revert to its letter
+  // layout, which is maddening when typing a number. So when another player's
+  // answer comes in, bail out entirely and touch nothing.
+  if (state.phase === 'answering' && lockedAnswer === null && document.getElementById('answer-input')) {
+    return;
+  }
+
   const p = myPlayer();
   if (p) {
     const av = document.getElementById('player-avatar');
@@ -766,13 +775,6 @@ function render() {
   }
 
   const content = document.getElementById('phase-content');
-
-  // If the answer input is already on screen and the player hasn't locked in,
-  // skip re-rendering entirely — recreating the <input> resets the phone keyboard layout.
-  if (state.phase === 'answering' && lockedAnswer === null && document.getElementById('answer-input')) {
-    return;
-  }
-
   content.innerHTML = '';
 
   switch (state.phase) {
@@ -967,10 +969,12 @@ function renderAnswering(el) {
   const p    = myPlayer();
   const myAns = state.answers.find(a => a.playerId === myPlayerId);
 
+  let cat = null;
   if (tile && tile.id !== state.board.startTileId && tile.id !== state.board.endTileId) {
-    const { cat, color } = effectiveCatInfo(p, tile);
+    const info = effectiveCatInfo(p, tile);
+    cat = info.cat;
     el.insertAdjacentHTML('beforeend', `
-      <div class="category-badge cat-${color}">${catLabel(cat)}</div>
+      <div class="category-badge cat-${info.color}">${catLabel(cat)}</div>
       <div class="category-prompt">${catPrompt(cat)}</div>
     `);
   }
@@ -996,6 +1000,10 @@ function renderAnswering(el) {
   input.autocomplete = 'off';
   input.autocorrect = 'off';
   input.spellcheck = false;
+  // Year/decade/±3-year answers are numeric — show a number pad instead of letters.
+  if (cat === 'year_exact' || cat === 'year_range' || cat === 'decade') {
+    input.inputMode = 'numeric';
+  }
   input.value = draftAnswer;
   input.oninput = () => { draftAnswer = input.value; };
   el.appendChild(input);
