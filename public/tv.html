@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hitstar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,600;0,700;0,900;1,700&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: transparent;
+    color: #fff;
+    font-family: 'Poppins', 'Segoe UI', system-ui, sans-serif;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  /* ── Header ── */
+  header {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 10px 28px;
+    background: #16162a;
+    border-bottom: 1px solid #2a2a4a;
+    flex-shrink: 0;
+    min-height: 58px;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+    letter-spacing: 4px;
+    color: #f1c40f;
+    text-transform: uppercase;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+
+
+  /* ── Info bar (lobby + path_selection + advancing) ── */
+  #info-bar {
+    display: none;
+    padding: 10px 28px;
+    background: #111126;
+    border-bottom: 1px solid #22224a;
+    font-size: 0.95rem;
+    color: #aaa;
+    gap: 24px;
+    align-items: center;
+  }
+
+  #info-bar .join-url {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #f1c40f;
+    letter-spacing: 1px;
+  }
+
+  #info-bar .lobby-players {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .lobby-avatar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9rem;
+  }
+  .lobby-avatar .dot {
+    width: 32px; height: 32px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.9rem;
+  }
+
+  /* ── Main area ── */
+  #main {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+  }
+
+  /* Board section */
+  #board-section {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #board {
+    width: 100%;
+    height: 100%;
+  }
+
+  /* Tile styles */
+  .tile-red    { fill: #e74c3c; }
+  .tile-blue   { fill: #3498db; }
+  .tile-green  { fill: #2ecc71; }
+  .tile-yellow { fill: #f1c40f; }
+  .tile-purple { fill: #9b59b6; }
+  .tile-start  { fill: #555577; }
+  .tile-end    { fill: #e91e63; }
+
+  .path-line  { stroke: #2a2a4a; stroke-width: 5; fill: none; stroke-linecap: round; }
+
+  #legend {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 0.8rem;
+    color: #bbb;
+    white-space: nowrap;
+  }
+
+  .legend-swatch {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+
+  /* Tile highlight for path selection */
+  .tile-highlight circle { filter: drop-shadow(0 0 8px currentColor); }
+  @keyframes pulse-ring {
+    0%   { r: 42; opacity: 0.6; }
+    100% { r: 60; opacity: 0; }
+  }
+  .pulse-ring { animation: pulse-ring 1.2s ease-out infinite; }
+
+  /* ── Answering modal ── */
+  #answering-modal {
+    position: absolute;
+    inset: 0;
+    background: rgba(13, 13, 26, 0.72);
+    display: none;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #modal-card {
+    background: #16162a;
+    border: 1px solid #2a2a4a;
+    border-radius: 24px;
+    padding: 40px 64px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 14px;
+    min-width: 380px;
+  }
+
+  #modal-icon   { font-size: 2.5rem; }
+  #modal-timer  { font-size: 6rem; font-weight: 700; font-variant-numeric: tabular-nums; line-height: 1; }
+  #modal-timer-bar {
+    width: 100%;
+    height: 6px;
+    background: #2a2a4a;
+    border-radius: 3px;
+    overflow: hidden;
+  }
+  #modal-timer-fill { height: 100%; background: #2ecc71; transition: width 0.25s linear, background 0.5s; border-radius: 3px; }
+  #modal-lock-count { font-size: 1.1rem; color: #8888aa; }
+
+  /* ── Reveal section ── */
+  #reveal-section {
+    position: absolute;
+    inset: 0;
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  #song-reveal-block {
+    flex-shrink: 0;
+    padding: 32px 64px 24px;
+    border-bottom: 1px solid #2a2a4a;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+  }
+
+  .sr-title  { font-size: 4.4rem; font-weight: 700; color: #f1c40f; line-height: 1.1; }
+  .sr-artist { font-size: 2.6rem; color: #ddd; margin-top: 4px; }
+  .sr-year   { font-size: 1.6rem; color: #666; margin-top: 2px; }
+
+  /* Answer table */
+  #answers-table {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0 64px 32px;
+  }
+
+  .ans-row {
+    display: grid;
+    grid-template-columns: 300px 200px 1fr;
+    align-items: center;
+    border-bottom: 1px solid #1e1e3a;
+    min-height: 68px;
+  }
+
+  .ans-row.header-row {
+    position: sticky; top: 0;
+    background: #0d0d1a;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #555;
+    min-height: 40px;
+    padding-top: 12px;
+  }
+
+  .ans-cell { padding: 12px 16px 12px 0; }
+
+  .ans-player {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 600;
+    font-size: 1.3rem;
+  }
+
+  .ans-player .dot {
+    width: 38px; height: 38px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 1rem; flex-shrink: 0;
+  }
+
+  .cat-badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .cat-red    { background: #e74c3c22; color: #e74c3c; border: 1px solid #e74c3c44; }
+  .cat-blue   { background: #3498db22; color: #3498db; border: 1px solid #3498db44; }
+  .cat-green  { background: #2ecc7122; color: #2ecc71; border: 1px solid #2ecc7144; }
+  .cat-yellow { background: #f1c40f22; color: #f1c40f; border: 1px solid #f1c40f44; }
+  .cat-purple { background: #9b59b622; color: #9b59b6; border: 1px solid #9b59b644; }
+
+  .ans-text {
+    font-size: 1.9rem;
+    color: #eee;
+  }
+  .ans-text.empty { color: #444; font-style: italic; }
+
+  /* ── Players bottom bar ── */
+  #players-bottom {
+    display: flex;
+    background: #16162a;
+    border-top: 1px solid #2a2a4a;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  .pbc {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 20px;
+    border-right: 1px solid #2a2a4a;
+    flex: 1;
+    min-width: 0;
+    opacity: 0.4;
+    transition: opacity 0.3s;
+  }
+  .pbc.connected { opacity: 1; }
+
+  .pbc-avatar {
+    width: 34px; height: 34px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.95rem;
+    flex-shrink: 0;
+  }
+
+  .pbc-name {
+    font-size: 0.85rem;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .pbc-cat {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 2px;
+  }
+
+  /* ── Tile cursors ── */
+  @keyframes cursor-pulse {
+    0%, 100% { opacity: 0.85; }
+    50%       { opacity: 0.3; }
+  }
+  .cursor-ring { animation: cursor-pulse 1s ease-in-out infinite; }
+
+  /* ── Countdown overlay ── */
+  #fullscreen-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+  }
+  #fullscreen-hint {
+    background: rgba(0,0,0,0.55);
+    color: #fff;
+    font-size: 1.3rem;
+    padding: 14px 28px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.15);
+    backdrop-filter: blur(6px);
+    pointer-events: none;
+  }
+
+  #countdown-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(13, 13, 26, 0.82);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  #countdown-label { font-size: 1.2rem; color: #8888aa; text-transform: uppercase; letter-spacing: 3px; }
+  #countdown-number {
+    font-size: 14rem;
+    font-weight: 900;
+    font-variant-numeric: tabular-nums;
+    line-height: 1;
+    color: #f1c40f;
+  }
+
+  /* ── Finished overlay ── */
+  #finished-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(13, 13, 26, 0.93);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+
+  .finished-icon   { font-size: 6rem; }
+  .finished-title  { font-size: 4rem; font-weight: 700; color: #f1c40f; }
+  .finished-winners {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  .finished-winner-row {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+  }
+  .finished-winner-avatar {
+    width: 64px; height: 64px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 1.6rem;
+    overflow: hidden;
+    border: 3px solid;
+    flex-shrink: 0;
+  }
+
+  /* ── Eurovision stage theme ───────────────────────── */
+
+  #stage-bg {
+    position: fixed; inset: 0; background: #080818;
+    z-index: -1; overflow: hidden; pointer-events: none;
+  }
+
+  .beam {
+    position: absolute; top: -5%; width: 130px; height: 115%;
+    transform-origin: 50% 0%; filter: blur(48px);
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+
+  @keyframes beam-sway-a {
+    from { opacity: .07; transform: rotate(-11deg) scaleX(.7); }
+    to   { opacity: .18; transform: rotate( 11deg) scaleX(1.4); }
+  }
+  @keyframes beam-sway-b {
+    from { opacity: .10; transform: rotate(-7deg) scaleX(1.1); }
+    to   { opacity: .20; transform: rotate(14deg) scaleX(.8); }
+  }
+  @keyframes beam-sway-c {
+    from { opacity: .06; transform: rotate(-13deg) scaleX(.9); }
+    to   { opacity: .16; transform: rotate( 8deg) scaleX(1.3); }
+  }
+
+  #disco-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+  @keyframes star-twinkle {
+    0%,100% { opacity:0; transform:scale(.2) rotate(0deg); }
+    50%      { opacity:1; transform:scale(1)  rotate(180deg); }
+  }
+  .star-particle {
+    position: absolute; pointer-events: none; user-select: none;
+    animation: star-twinkle ease-in-out infinite;
+    font-size: 10px; line-height: 1; color: #fff;
+  }
+
+  /* Glass morphism panels */
+  header {
+    background: rgba(12,12,36,.75) !important;
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(255,255,255,.07) !important;
+  }
+  #info-bar {
+    background: rgba(6,6,24,.72) !important;
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,.06) !important;
+  }
+  #players-bottom {
+    background: rgba(12,12,36,.78) !important;
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border-top: 1px solid rgba(255,255,255,.07) !important;
+  }
+  #modal-card {
+    background: rgba(14,14,38,.94) !important;
+    backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+    border: 1px solid rgba(241,196,15,.18) !important;
+    box-shadow: 0 0 60px rgba(124,58,237,.35), 0 0 120px rgba(233,30,99,.18) !important;
+    animation: modal-pulse 3s ease-in-out infinite;
+  }
+  @keyframes modal-pulse {
+    0%,100% { box-shadow: 0 0 60px rgba(124,58,237,.35), 0 0 120px rgba(233,30,99,.18); }
+    50%      { box-shadow: 0 0 80px rgba(124,58,237,.55), 0 0 160px rgba(233,30,99,.28); }
+  }
+  #reveal-section   { background: rgba(8,8,24,.96); backdrop-filter: blur(20px); }
+  #countdown-overlay{ background: rgba(8,8,24,.88) !important; backdrop-filter: blur(20px); }
+  #finished-overlay { background: rgba(8,8,24,.93) !important; backdrop-filter: blur(20px); }
+  #song-reveal-block{ border-bottom: 1px solid rgba(255,255,255,.08) !important; }
+
+  /* Eurovision gradient title */
+  h1 {
+    background: linear-gradient(135deg, #f1c40f 0%, #ff4081 45%, #7c3aed 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: title-gradient 5s ease-in-out infinite;
+    filter: drop-shadow(0 0 18px rgba(241,196,15,.35));
+  }
+  @keyframes title-gradient {
+    0%,100% { background-position: 0% 50%; }
+    50%      { background-position: 100% 50%; }
+  }
+
+  /* Countdown gradient number */
+  #countdown-number {
+    background: linear-gradient(135deg, #f1c40f, #ff4081);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: title-gradient 2s ease-in-out infinite;
+  }
+
+  /* Tile glows — opacity on glow halo + dark overlay on tile */
+  @keyframes tile-glow-pulse {
+    0%,100% { opacity: 0.32; }
+    50%      { opacity: 0.88; }
+  }
+  @keyframes tile-dark-pulse {
+    0%,100% { opacity: 0.24; }
+    50%      { opacity: 0;    }
+  }
+
+  /* Glowing path lines */
+  .path-line { stroke: rgba(255,255,255,.14) !important; stroke-width: 4 !important; }
+
+  /* Ready badge in header */
+  #ready-badge {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #2ecc71;
+    background: rgba(46,204,113,.12);
+    border: 1px solid rgba(46,204,113,.35);
+    border-radius: 20px;
+    padding: 4px 16px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  /* Board overflow so glows aren't clipped */
+  #board { overflow: visible; }
+
+  /* Bouncing trophy */
+  .finished-icon { animation: trophy-bounce 1.2s ease-in-out infinite; }
+  @keyframes trophy-bounce {
+    0%,100% { transform: translateY(0) scale(1); }
+    50%      { transform: translateY(-16px) scale(1.08); }
+  }
+  .finished-title {
+    background: linear-gradient(135deg, #f1c40f, #ff4081);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+</style>
+</head>
+<body>
+
+<div id="stage-bg" aria-hidden="true">
+  <div class="beam" style="left:6%;  background:linear-gradient(180deg,#7c3aed,transparent); animation-name:beam-sway-a; animation-duration:7s;  animation-delay:0s;"></div>
+  <div class="beam" style="left:21%; background:linear-gradient(180deg,#e91e63,transparent); animation-name:beam-sway-b; animation-duration:9s;  animation-delay:1.2s;"></div>
+  <div class="beam" style="left:38%; background:linear-gradient(180deg,#00bcd4,transparent); animation-name:beam-sway-c; animation-duration:8s;  animation-delay:2.4s; animation-direction:alternate-reverse;"></div>
+  <div class="beam" style="left:54%; background:linear-gradient(180deg,#f1c40f,transparent); animation-name:beam-sway-a; animation-duration:10s; animation-delay:0.6s; animation-direction:alternate-reverse;"></div>
+  <div class="beam" style="left:70%; background:linear-gradient(180deg,#e91e63,transparent); animation-name:beam-sway-b; animation-duration:7.5s;animation-delay:1.8s;"></div>
+  <div class="beam" style="left:86%; background:linear-gradient(180deg,#7c3aed,transparent); animation-name:beam-sway-c; animation-duration:9.5s;animation-delay:3.1s;"></div>
+  <canvas id="disco-canvas"></canvas>
+  <div id="sparkles-bg"></div>
+</div>
+
+<header>
+  <h1>★ Hitstar</h1>
+  <div id="ready-badge" style="display:none"></div>
+  <div id="legend">
+    <div class="legend-item"><div class="legend-swatch" style="background:#e74c3c"></div>Title</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#3498db"></div>Artist</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#2ecc71"></div>Exact Year</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#9b59b6"></div>Year ±3</div>
+    <div class="legend-item"><div class="legend-swatch" style="background:#f1c40f"></div>Decade</div>
+  </div>
+</header>
+
+<div id="info-bar"></div>
+
+<div id="main">
+
+  <!-- Board (default view) -->
+  <div id="board-section">
+    <svg id="board" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <filter id="tile-glow-filter" x="-120%" y="-120%" width="340%" height="340%">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="14" result="blur"/>
+        </filter>
+        <linearGradient id="shimmer-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+          <stop offset="0%"   stop-color="white" stop-opacity="0"/>
+          <stop offset="35%"  stop-color="white" stop-opacity="0"/>
+          <stop offset="50%"  stop-color="white" stop-opacity="0.9"/>
+          <stop offset="65%"  stop-color="white" stop-opacity="0"/>
+          <stop offset="100%" stop-color="white" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+      <defs id="board-defs"></defs>
+      <defs id="svg-defs"></defs>
+      <g id="paths-layer"></g>
+      <g id="tiles-layer"></g>
+      <g id="tokens-layer"></g>
+      <g id="cursors-layer"></g>
+      <g id="highlights-layer"></g>
+    </svg>
+  </div>
+
+  <!-- Answering modal (over board) -->
+  <div id="answering-modal">
+    <div id="modal-card">
+      <div id="modal-icon">🎵</div>
+      <div id="modal-timer">30</div>
+      <div id="modal-timer-bar"><div id="modal-timer-fill" style="width:100%"></div></div>
+      <div id="modal-lock-count">0 / 0 locked in</div>
+    </div>
+  </div>
+
+  <!-- Reveal (replaces board) -->
+  <div id="reveal-section">
+    <div id="song-reveal-block"></div>
+    <div id="answers-table">
+      <div class="ans-row header-row">
+        <div class="ans-cell">Player</div>
+        <div class="ans-cell">Category</div>
+        <div class="ans-cell">Answer</div>
+      </div>
+      <div id="answers-rows"></div>
+    </div>
+  </div>
+
+  <!-- Countdown -->
+  <div id="countdown-overlay">
+    <div id="countdown-label">Get ready…</div>
+    <div id="countdown-number">3</div>
+  </div>
+
+  <!-- Fullscreen prompt -->
+  <div id="fullscreen-overlay">
+    <div id="fullscreen-hint">⛶ Tap to go fullscreen</div>
+  </div>
+
+  <!-- Finished -->
+  <div id="finished-overlay">
+    <div class="finished-icon">🏆</div>
+    <div class="finished-title">Congratulations!</div>
+    <div class="finished-winners" id="finished-winners"></div>
+  </div>
+
+</div>
+
+<!-- Players bottom bar -->
+<div id="players-bottom"></div>
+
+<audio id="audio-player" style="position:absolute;width:0;height:0;opacity:0" preload="auto"></audio>
+
+<script>
+const TILE_RADIUS = 42; // must match NODE_SIZE/2 in board.ts
+
+const CAT_LABELS = { title: 'TITLE', artist: 'ARTIST', year_exact: 'EXACT YEAR', year_range: 'YEAR ±3', decade: 'DECADE' };
+const TIMER_TOTAL = 30000;
+
+let state = null;
+let boardBuilt = false;
+let timerInterval = null;
+let audioCurrentSongId = null;
+let confettiFired = false;
+let localIP = location.hostname;
+let animSnapshot = null; // playerId → tileId snapshot taken just before 'animating' phase
+
+fetch('/ip').then(r => r.text()).then(ip => { localIP = ip; if (state) render(); });
+
+// ── Eurovision background effects ────────────────────────────────
+
+function initEurovisionBg() {
+  // ── Disco ball flecks ──
+  const canvas = document.getElementById('disco-canvas');
+  const ctx    = canvas.getContext('2d');
+
+  const FLECKS = Array.from({ length: 55 }, () => ({
+    cx:    Math.random(),
+    cy:    0.05 + Math.random() * 0.55,
+    rx:    0.08 + Math.random() * 0.28,
+    ry:    0.04 + Math.random() * 0.14,
+    angle: Math.random() * Math.PI * 2,
+    speed: (Math.random() < .5 ? 1 : -1) * (.003 + Math.random() * .007),
+    size:  3 + Math.random() * 5,
+    hue:   Math.random() * 360,
+    alpha: .45 + Math.random() * .55,
+  }));
+
+  function drawDisco() {
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (const f of FLECKS) {
+      f.angle += f.speed;
+      f.hue    = (f.hue + .4) % 360;
+      const x  = (f.cx + Math.cos(f.angle) * f.rx) * canvas.width;
+      const y  = (f.cy + Math.sin(f.angle) * f.ry) * canvas.height;
+      const pulse = .55 + .45 * Math.sin(f.angle * 2.3);
+      ctx.globalAlpha = f.alpha * pulse;
+      ctx.fillStyle   = `hsl(${f.hue},100%,75%)`;
+      ctx.fillRect(x - f.size / 2, y - f.size / 2, f.size, f.size);
+    }
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(drawDisco);
+  }
+  drawDisco();
+
+  // ── Twinkling star particles ──
+  const container = document.getElementById('sparkles-bg');
+  const SYMBOLS   = ['✦','✧','★','·','⋆'];
+  for (let i = 0; i < 35; i++) {
+    const s = document.createElement('span');
+    s.className   = 'star-particle';
+    s.textContent = SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)];
+    const size    = 7 + Math.random() * 10;
+    s.style.cssText = `
+      left:${Math.random()*100}%;
+      top:${Math.random()*100}%;
+      font-size:${size}px;
+      animation-duration:${1.8 + Math.random() * 2.5}s;
+      animation-delay:${Math.random() * 4}s;
+      opacity:0;
+      color:hsl(${Math.random()*60+30},100%,90%);
+    `;
+    container.appendChild(s);
+  }
+}
+
+initEurovisionBg();
+
+const ws = new WebSocket(`ws://${location.host}/ws`);
+ws.onmessage = e => {
+  const m = JSON.parse(e.data);
+  if (m.type === 'state') {
+    // Snapshot tile positions on the first entry into advancing (from reveal),
+    // but not when returning from animating (tokens are already at new positions).
+    if (m.state.phase === 'advancing' && state?.phase !== 'advancing' && state?.phase !== 'animating') {
+      animSnapshot = {};
+      for (const p of (state?.players ?? [])) animSnapshot[p.id] = p.tileId;
+    }
+    state = m.state;
+    render();
+  }
+};
+ws.onclose   = () => setTimeout(() => location.reload(), 2000);
+
+// ── Layout switches ──────────────────────────────────────────────
+
+function showBoard()  {
+  document.getElementById('board-section').style.display   = 'flex';
+  document.getElementById('reveal-section').style.display  = 'none';
+}
+function showReveal() {
+  document.getElementById('board-section').style.display   = 'none';
+  document.getElementById('reveal-section').style.display  = 'flex';
+}
+function setModal(on)     { document.getElementById('answering-modal').style.display  = on ? 'flex' : 'none'; }
+function setFinished(on)  { document.getElementById('finished-overlay').style.display = on ? 'flex' : 'none'; }
+function setCountdown(on) { document.getElementById('countdown-overlay').style.display = on ? 'flex' : 'none'; }
+
+let countdownInterval = null;
+function startCountdownDisplay(countdownEnd) {
+  if (countdownInterval) clearInterval(countdownInterval);
+  const el = document.getElementById('countdown-number');
+  const tick = () => {
+    const s = Math.ceil(Math.max(0, countdownEnd - Date.now()) / 1000);
+    el.textContent = s || '♪';
+  };
+  tick();
+  countdownInterval = setInterval(tick, 100);
+}
+function stopCountdown() {
+  if (countdownInterval) { clearInterval(countdownInterval); countdownInterval = null; }
+}
+
+function setInfoBar(html) {
+  const bar = document.getElementById('info-bar');
+  if (html) { bar.style.display = 'flex'; bar.innerHTML = html; }
+  else       { bar.style.display = 'none'; bar.innerHTML = ''; }
+}
+
+
+// ── SVG Board ────────────────────────────────────────────────────
+
+function buildBoard(board) {
+  if (boardBuilt) return;
+  boardBuilt = true;
+
+  // Compute viewBox from dagre-assigned tile positions
+  const tileList = Object.values(board.tiles);
+  const pad = TILE_RADIUS + 55; // extra room so glow isn't clipped by viewBox
+  const minX = Math.min(...tileList.map(t => t.x)) - pad;
+  const minY = Math.min(...tileList.map(t => t.y)) - pad;
+  const maxX = Math.max(...tileList.map(t => t.x)) + pad;
+  const maxY = Math.max(...tileList.map(t => t.y)) + pad;
+  document.getElementById('board').setAttribute('viewBox', `${minX} ${minY} ${maxX - minX} ${maxY - minY}`);
+
+  const pathsLayer = document.getElementById('paths-layer');
+  const tilesLayer = document.getElementById('tiles-layer');
+
+  for (const tile of tileList) {
+    for (const nextId of tile.nextTiles) {
+      const next = board.tiles[nextId];
+      if (!next) continue;
+      const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+      line.setAttribute('x1', tile.x); line.setAttribute('y1', tile.y);
+      line.setAttribute('x2', next.x); line.setAttribute('y2', next.y);
+      line.setAttribute('class', 'path-line');
+      pathsLayer.appendChild(line);
+    }
+  }
+
+  for (const tile of tileList) {
+    const isStart = tile.id === board.startTileId;
+    const isEnd   = tile.id === board.endTileId;
+    const r = (isStart || isEnd) ? 50 : TILE_RADIUS;
+
+    const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    g.id = `tile-${tile.id}`;
+
+    // Glow layer: blurred halo + dark overlay, both opacity-animated per tile
+    if (!isStart) {
+      const GLOW_FILL = { red:'#e74c3c', blue:'#3498db', green:'#2ecc71', yellow:'#f1c40f', purple:'#9b59b6', end:'#e91e63' };
+      const colorKey  = isEnd ? 'end' : tile.color;
+      const glowDurS  = { red:13, blue:16, green:14, yellow:11, purple:18, end:10 }[colorKey] ?? 14;
+      const glowDelay = `${(-(Math.random() * glowDurS)).toFixed(2)}s`;
+
+      const gr = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+      gr.setAttribute('x', tile.x - r - 6); gr.setAttribute('y', tile.y - r - 6);
+      gr.setAttribute('width', (r + 6) * 2); gr.setAttribute('height', (r + 6) * 2);
+      gr.setAttribute('rx', isEnd ? 20 : 16);
+      gr.setAttribute('fill', GLOW_FILL[colorKey] ?? '#fff');
+      gr.setAttribute('filter', 'url(#tile-glow-filter)');
+      gr.id = `tile-glow-${tile.id}`;
+      gr.style.animation = `tile-glow-pulse ${glowDurS}s ease-in-out ${glowDelay} infinite`;
+      g.appendChild(gr);
+
+      // Store for the dark overlay appended after the solid rect
+      g._glowDurS  = glowDurS;
+      g._glowDelay = glowDelay;
+    }
+
+    const c = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+    c.setAttribute('x', tile.x - r); c.setAttribute('y', tile.y - r);
+    c.setAttribute('width', r * 2); c.setAttribute('height', r * 2);
+    c.setAttribute('rx', isStart || isEnd ? 17 : 13);
+    c.setAttribute('class', isStart ? 'tile-start' : isEnd ? 'tile-end' : `tile-${tile.color}`);
+    c.setAttribute('stroke', '#0d0d1a'); c.setAttribute('stroke-width', '3');
+    c.id = `tile-solid-${tile.id}`;
+    g.appendChild(c);
+
+    // Dark overlay dims the tile when glow is low (in-phase with glow)
+    if (!isStart) {
+      const dr = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+      dr.setAttribute('x', tile.x - r); dr.setAttribute('y', tile.y - r);
+      dr.setAttribute('width', r * 2); dr.setAttribute('height', r * 2);
+      dr.setAttribute('rx', isEnd ? 17 : 13);
+      dr.setAttribute('fill', '#000');
+      dr.style.animation = `tile-dark-pulse ${g._glowDurS}s ease-in-out ${g._glowDelay} infinite`;
+      g.appendChild(dr);
+    }
+
+    tilesLayer.appendChild(g);
+  }
+}
+
+function renderHighlights(board, tileIds) {
+  const layer = document.getElementById('highlights-layer');
+  layer.innerHTML = '';
+  for (const id of tileIds) {
+    const tile = board.tiles[id];
+    if (!tile) continue;
+    const pulse = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    pulse.setAttribute('cx', tile.x); pulse.setAttribute('cy', tile.y); pulse.setAttribute('r', TILE_RADIUS);
+    pulse.setAttribute('class', 'pulse-ring');
+    pulse.setAttribute('fill', 'none');
+    pulse.setAttribute('stroke', '#f1c40f'); pulse.setAttribute('stroke-width', '3');
+    layer.appendChild(pulse);
+  }
+}
+
+// Compute final pixel positions for every player token (handles stacking offset)
+function computeTokenPositions(board, players) {
+  const byTile = {};
+  for (const p of players) (byTile[p.tileId] ??= []).push(p);
+  const pos = {};
+  for (const [tileId, group] of Object.entries(byTile)) {
+    const tile = board.tiles[tileId];
+    if (!tile) continue;
+    group.forEach((p, i) => {
+      const angle = (i / group.length) * 2 * Math.PI - Math.PI / 2;
+      const dist  = group.length === 1 ? 0 : 18;
+      pos[p.id] = { x: tile.x + Math.cos(angle) * dist, y: tile.y + Math.sin(angle) * dist };
+    });
+  }
+  return pos;
+}
+
+// animFromTileIds: playerId → tileId to animate FROM (null = no animation)
+// doAnimate: if false, tokens are frozen at the from-positions (no CSS transition)
+function renderTokens(board, players, animFromTileIds = null, doAnimate = true) {
+  const NS = 'http://www.w3.org/2000/svg';
+  const layer = document.getElementById('tokens-layer');
+  const defs  = document.getElementById('svg-defs');
+  layer.innerHTML = '';
+  defs.innerHTML  = '';
+
+  const finalPos = computeTokenPositions(board, players);
+  let clipIdx = 0;
+
+  for (const p of players) {
+    const { x: fx, y: fy } = finalPos[p.id] ?? { x: 0, y: 0 };
+
+    // Starting position: old tile centre when animating, else final position
+    let sx = fx, sy = fy;
+    if (animFromTileIds) {
+      const fromTile = board.tiles[animFromTileIds[p.id] ?? p.tileId];
+      if (fromTile) { sx = fromTile.x; sy = fromTile.y; }
+    }
+
+    const g = document.createElementNS(NS, 'g');
+    // Use CSS transform so transitions work
+    g.style.transform = `translate(${sx}px, ${sy}px)`;
+
+    if (p.avatarImage) {
+      const clipId = `ac${clipIdx++}`;
+      const clipPath = document.createElementNS(NS, 'clipPath');
+      clipPath.setAttribute('id', clipId);
+      const clipCircle = document.createElementNS(NS, 'circle');
+      clipCircle.setAttribute('r', '17');
+      clipPath.appendChild(clipCircle);
+      defs.appendChild(clipPath);
+
+      const img = document.createElementNS(NS, 'image');
+      img.setAttribute('href', p.avatarImage);
+      img.setAttribute('x', '-17'); img.setAttribute('y', '-17');
+      img.setAttribute('width', '34'); img.setAttribute('height', '34');
+      img.setAttribute('clip-path', `url(#${clipId})`);
+      img.setAttribute('preserveAspectRatio', 'xMidYMid slice');
+      g.appendChild(img);
+
+      const ring = document.createElementNS(NS, 'circle');
+      ring.setAttribute('r', '18');
+      ring.setAttribute('fill', 'none');
+      ring.setAttribute('stroke', p.avatarColor);
+      ring.setAttribute('stroke-width', '2.5');
+      g.appendChild(ring);
+    } else {
+      const circle = document.createElementNS(NS, 'circle');
+      circle.setAttribute('r', '17');
+      circle.setAttribute('fill', p.avatarColor);
+      circle.setAttribute('stroke', '#0d0d1a');
+      circle.setAttribute('stroke-width', '2');
+      g.appendChild(circle);
+
+      const text = document.createElementNS(NS, 'text');
+      text.setAttribute('text-anchor', 'middle');
+      text.setAttribute('dominant-baseline', 'central');
+      text.setAttribute('font-size', '12');
+      text.setAttribute('font-weight', 'bold');
+      text.setAttribute('fill', '#fff');
+      text.textContent = p.name[0].toUpperCase();
+      g.appendChild(text);
+    }
+
+    layer.appendChild(g);
+
+    // Kick off CSS transition to final position only when actually animating
+    if (animFromTileIds && doAnimate && (sx !== fx || sy !== fy)) {
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        g.style.transition = 'transform 0.9s cubic-bezier(0.4, 0, 0.2, 1)';
+        g.style.transform  = `translate(${fx}px, ${fy}px)`;
+      }));
+    }
+  }
+}
+
+
+// ── Tile cursors ─────────────────────────────────────────────────
+
+function renderTileCursors(board, players, tileCursors) {
+  const NS = 'http://www.w3.org/2000/svg';
+  const layer = document.getElementById('cursors-layer');
+  layer.innerHTML = '';
+  if (!tileCursors) return;
+
+  // Group by tileId so multiple players on the same tile get concentric rings
+  const byTile = {};
+  for (const [playerId, tileId] of Object.entries(tileCursors)) {
+    (byTile[tileId] ??= []).push(playerId);
+  }
+
+  for (const [tileId, playerIds] of Object.entries(byTile)) {
+    const tile = board.tiles[tileId];
+    if (!tile) continue;
+
+    playerIds.forEach((playerId, i) => {
+      const player = players.find(p => p.id === playerId);
+      if (!player) return;
+
+      const r = TILE_RADIUS + 10 + i * 12;
+
+      const ring = document.createElementNS(NS, 'circle');
+      ring.setAttribute('cx', tile.x); ring.setAttribute('cy', tile.y);
+      ring.setAttribute('r', r);
+      ring.setAttribute('fill', 'none');
+      ring.setAttribute('stroke', player.avatarColor);
+      ring.setAttribute('stroke-width', '3');
+      ring.setAttribute('stroke-dasharray', '8 5');
+      ring.setAttribute('class', 'cursor-ring');
+      layer.appendChild(ring);
+
+      // Player initial above the ring
+      const label = document.createElementNS(NS, 'text');
+      label.setAttribute('x', tile.x);
+      label.setAttribute('y', tile.y - r - 5);
+      label.setAttribute('text-anchor', 'middle');
+      label.setAttribute('font-size', '13');
+      label.setAttribute('font-weight', 'bold');
+      label.setAttribute('fill', player.avatarColor);
+      label.textContent = player.name[0].toUpperCase();
+      layer.appendChild(label);
+    });
+  }
+}
+
+// ── Timer ────────────────────────────────────────────────────────
+
+function startModalTimer(timerEnd) {
+  if (timerInterval) clearInterval(timerInterval);
+
+  const fill = document.getElementById('modal-timer-fill');
+  const num  = document.getElementById('modal-timer');
+
+  const tick = () => {
+    const remaining = Math.max(0, timerEnd - Date.now());
+    const pct = (remaining / TIMER_TOTAL) * 100;
+    fill.style.width = pct + '%';
+    fill.style.background = pct > 50 ? '#2ecc71' : pct > 25 ? '#f39c12' : '#e74c3c';
+    num.textContent = Math.ceil(remaining / 1000);
+    num.style.color = pct > 25 ? '#fff' : '#e74c3c';
+    if (remaining === 0) { clearInterval(timerInterval); timerInterval = null; }
+  };
+  tick();
+  timerInterval = setInterval(tick, 100);
+}
+
+function stopTimer() {
+  if (timerInterval) { clearInterval(timerInterval); timerInterval = null; }
+}
+
+// ── Reveal panel ─────────────────────────────────────────────────
+
+function renderRevealPanel(song, answers, players, board) {
+  const revealBlock = document.getElementById('song-reveal-block');
+  revealBlock.innerHTML = song?.title ? `
+    <div class="sr-title">${song.title}</div>
+    <div class="sr-artist">${song.artist}</div>
+    <div class="sr-year">${song.year}</div>
+  ` : '';
+
+  const rows = document.getElementById('answers-rows');
+  rows.innerHTML = '';
+
+  const CAT_TO_COLOR_TV = { title:'red', artist:'blue', year_exact:'green', year_range:'purple', decade:'yellow' };
+
+  for (const ans of (answers ?? [])) {
+    const player = players.find(pl => pl.id === ans.playerId);
+    const tile   = player ? board.tiles[player.tileId] : null;
+    const catOverridden = !!player?.categoryOverride;
+    const cat    = (player?.categoryOverride ?? tile?.category) ?? null;
+    const color  = catOverridden
+      ? (CAT_TO_COLOR_TV[player.categoryOverride] ?? tile?.color ?? null)
+      : (tile?.color ?? null);
+
+    const row = document.createElement('div');
+    row.className = 'ans-row';
+    row.innerHTML = `
+      <div class="ans-cell">
+        <div class="ans-player">
+          <div class="dot" style="background:${player?.avatarColor ?? '#888'}">${ans.playerName[0].toUpperCase()}</div>
+          ${ans.playerName}
+        </div>
+      </div>
+      <div class="ans-cell">
+        ${cat ? `<span class="cat-badge cat-${color}">${catOverridden ? '✦ ' : ''}${CAT_LABELS[cat]}</span>` : '—'}
+      </div>
+      <div class="ans-cell">
+        <span class="${ans.answer ? 'ans-text' : 'ans-text empty'}">${ans.answer || 'no answer'}</span>
+      </div>
+    `;
+    rows.appendChild(row);
+  }
+}
+
+// ── Bottom bar ───────────────────────────────────────────────────
+
+const COLOR_HEX = {
+  red: '#e74c3c', blue: '#3498db', green: '#2ecc71',
+  yellow: '#f1c40f', purple: '#9b59b6',
+};
+
+function renderBottomBar(players, board) {
+  const bar = document.getElementById('players-bottom');
+  bar.innerHTML = '';
+  for (const p of players) {
+    const tile = board.tiles[p.tileId];
+    const isStart = p.tileId === board.startTileId;
+    const isEnd   = p.tileId === board.endTileId;
+
+    let catText  = '—';
+    let catColor = '#555';
+    if (isEnd) {
+      catText = '🏆 Finished';
+    } else if (!isStart && tile) {
+      const effectiveCat = p.categoryOverride ?? tile.category;
+      const CAT_COLOR_MAP = { title:'red', artist:'blue', year_exact:'green', year_range:'purple', decade:'yellow' };
+      const effectiveColor = p.categoryOverride ? (CAT_COLOR_MAP[p.categoryOverride] ?? tile.color) : tile.color;
+      catText  = (p.categoryOverride ? '✦ ' : '') + (CAT_LABELS[effectiveCat] ?? effectiveCat);
+      catColor = COLOR_HEX[effectiveColor] ?? '#888';
+    }
+
+    const avatarInner = p.avatarImage
+      ? `<img src="${p.avatarImage}" style="width:100%;height:100%;object-fit:cover">`
+      : p.name[0].toUpperCase();
+    const avatarBg = p.avatarImage ? 'transparent' : p.avatarColor;
+
+    const card = document.createElement('div');
+    card.className = 'pbc' + (p.connected ? ' connected' : '');
+    card.innerHTML = `
+      <div class="pbc-avatar" style="background:${avatarBg};overflow:hidden">${avatarInner}</div>
+      <div>
+        <div class="pbc-name">${p.name}</div>
+        <div class="pbc-cat" style="color:${catColor}">${catText}</div>
+      </div>
+    `;
+    bar.appendChild(card);
+  }
+}
+
+// ── Confetti ─────────────────────────────────────────────────────
+
+function fireConfetti() {
+  const duration = 4000;
+  const end = Date.now() + duration;
+
+  // Burst from both sides
+  const burst = (originX) => confetti({
+    particleCount: 80,
+    angle: originX < 0.5 ? 60 : 120,
+    spread: 55,
+    origin: { x: originX, y: 0.65 },
+    colors: ['#f1c40f', '#e74c3c', '#3498db', '#2ecc71', '#9b59b6', '#fff'],
+  });
+
+  burst(0.1);
+  burst(0.9);
+
+  // Continuous shower for the duration
+  const frame = () => {
+    confetti({ particleCount: 3, angle: 60,  spread: 70, origin: { x: 0, y: 0.5 }, colors: ['#f1c40f','#fff','#e74c3c'] });
+    confetti({ particleCount: 3, angle: 120, spread: 70, origin: { x: 1, y: 0.5 }, colors: ['#3498db','#2ecc71','#9b59b6'] });
+    if (Date.now() < end) requestAnimationFrame(frame);
+  };
+  frame();
+}
+
+// ── Audio ────────────────────────────────────────────────────────
+
+const _audioEl = document.getElementById('audio-player');
+_audioEl.onended = () => ws.send(JSON.stringify({ type: 'song_ended' }));
+
+let _playBlocked = false;
+
+function unlockAudio() {
+  if (!_playBlocked) return;
+  _playBlocked = false;
+  _audioEl.play().catch(() => {});
+}
+
+function playAudio(song) {
+  if (!song?.previewUrl) return;
+  if (audioCurrentSongId === song.id) return;
+  audioCurrentSongId = song.id;
+  _audioEl.src = song.previewUrl;
+  _audioEl.play().catch(err => {
+    if (err.name === 'NotAllowedError') _playBlocked = true;
+  });
+}
+
+function stopAudio() {
+  _audioEl.pause();
+  _playBlocked = false;
+  audioCurrentSongId = null;
+}
+
+// ── Main render ──────────────────────────────────────────────────
+
+function refreshTileColors(board) {
+  for (const tile of Object.values(board.tiles)) {
+    const isStart = tile.id === board.startTileId;
+    const isEnd   = tile.id === board.endTileId;
+    const rect = document.getElementById(`tile-solid-${tile.id}`);
+    if (rect) rect.setAttribute('class', isStart ? 'tile-start' : isEnd ? 'tile-end' : `tile-${tile.color}`);
+    const gr = document.getElementById(`tile-glow-${tile.id}`);
+    if (gr && !isStart && !isEnd) {
+      const GLOW_FILL = { red:'#e74c3c', blue:'#3498db', green:'#2ecc71', yellow:'#f1c40f', purple:'#9b59b6' };
+      gr.setAttribute('fill', GLOW_FILL[tile.color] ?? '#fff');
+    }
+  }
+}
+
+function render() {
+  if (!state) return;
+  const { phase, players, board, currentSong, answers, timerEnd, pendingPathChoices } = state;
+
+  buildBoard(board);
+  refreshTileColors(board);
+  // Freeze tokens during choice phase (advancing + pending choices still exist).
+  // Animate during animating. Show at real positions once choices are done (second advancing).
+  const hasPendingChoices = Object.keys(pendingPathChoices ?? {}).length > 0;
+  const fromSnap = (phase === 'animating' || (phase === 'advancing' && hasPendingChoices)) ? animSnapshot : null;
+  renderTokens(board, players, fromSnap, phase === 'animating');
+  renderTileCursors(board, players, state.tileCursors);
+  renderBottomBar(players, board);
+
+  // Reset states
+  setModal(false);
+  setFinished(false);
+  setCountdown(false);
+  stopCountdown();
+  renderHighlights(board, []);
+  document.getElementById('ready-badge').style.display = 'none';
+
+  switch (phase) {
+
+    case 'lobby': {
+      showBoard();
+      stopTimer();
+      const url = `${location.protocol}//${localIP}:3000`;
+      const playerAvatars = players.map(p =>
+        `<div class="lobby-avatar"><div class="dot" style="background:${p.avatarColor}">${p.name[0].toUpperCase()}</div>${p.name}${p.isHost ? ' 👑' : ''}</div>`
+      ).join('');
+      setInfoBar(`
+        <div class="join-url">${url}</div>
+        <div class="lobby-players">${playerAvatars || '<span style="color:#555">Waiting for players...</span>'}</div>
+      `);
+      break;
+    }
+
+    case 'path_selection': {
+      showBoard();
+      stopTimer();
+      const startTile = board.tiles[board.startTileId];
+      renderHighlights(board, startTile?.nextTiles ?? []);
+      setInfoBar(null);
+      break;
+    }
+
+    case 'playing': {
+      showBoard();
+      stopTimer();
+      setInfoBar(null);
+      break;
+    }
+
+    case 'answering': {
+      showBoard();
+      setModal(true);
+      const locked = answers?.filter(a => a.locked).length ?? 0;
+      document.getElementById('modal-lock-count').textContent = `${locked} / ${players.length} locked in`;
+      if (timerEnd) startModalTimer(timerEnd);
+      playAudio(currentSong);
+      setInfoBar(null);
+      break;
+    }
+
+    case 'reveal': {
+      showReveal();
+      stopTimer();
+      setModal(false);
+      renderRevealPanel(currentSong, answers, players, board);
+      setInfoBar(null);
+      break;
+    }
+
+    case 'animating': {
+      showBoard();
+      stopTimer();
+      setInfoBar(null);
+      break;
+    }
+
+    case 'advancing': {
+      showBoard();
+      stopTimer();
+      stopAudio();
+      if (Object.keys(pendingPathChoices ?? {}).length) {
+        renderHighlights(board, Object.values(pendingPathChoices).flat());
+      }
+      const readyCount = state.readyPlayerIds?.length ?? 0;
+      const totalCount = players.filter(p => p.connected).length;
+      const badge = document.getElementById('ready-badge');
+      badge.textContent = `${readyCount} / ${totalCount} ready`;
+      badge.style.display = 'block';
+      setInfoBar(null);
+      break;
+    }
+
+    case 'counting_down': {
+      showBoard();
+      stopTimer();
+      setCountdown(true);
+      startCountdownDisplay(state.countdownEnd);
+      setInfoBar(null);
+      break;
+    }
+
+    case 'finished': {
+      showBoard();
+      stopTimer();
+      stopAudio();
+      setFinished(true);
+      if (!confettiFired) {
+        confettiFired = true;
+        fireConfetti();
+      }
+      const winners = players.filter(p => p.tileId === board.endTileId);
+      const winnersEl = document.getElementById('finished-winners');
+      winnersEl.innerHTML = winners.length ? winners.map(p => {
+        const avatarInner = p.avatarImage
+          ? `<img src="${p.avatarImage}" style="width:100%;height:100%;object-fit:cover">`
+          : p.name[0].toUpperCase();
+        const avatarBg = p.avatarImage ? 'transparent' : p.avatarColor;
+        return `
+          <div class="finished-winner-row">
+            <div class="finished-winner-avatar"
+                 style="background:${avatarBg};border-color:${p.avatarColor}">${avatarInner}</div>
+            ${p.name}
+          </div>`;
+      }).join('') : '<div style="font-size:1.8rem;color:#ccc">Great game!</div>';
+      setInfoBar(null);
+      break;
+    }
+  }
+}
+
+// ── Fullscreen ───────────────────────────────────────────────────
+const fsOverlay = document.getElementById('fullscreen-overlay');
+fsOverlay.addEventListener('click', () => {
+  unlockAudio();
+  document.documentElement.requestFullscreen().catch(() => {});
+});
+document.addEventListener('fullscreenchange', () => {
+  fsOverlay.style.display = document.fullscreenElement ? 'none' : 'flex';
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+  "name": "hitstar-boardgame",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "bun run src/server.ts",
+    "dev": "bun --hot run src/server.ts"
+  },
+  "dependencies": {
+    "@types/dagre": "^0.7.54",
+    "dagre": "^0.8.5",
+    "node-html-parser": "^7.1.0"
+  }
+}

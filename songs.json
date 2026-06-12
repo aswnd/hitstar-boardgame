@@ -1,0 +1,3362 @@
+[
+  {
+    "title": "La donna è mobile (Rigoletto)",
+    "artist": "Enrico Caruso",
+    "year": 1908,
+    "previewUrl": "/previews/0.mp3"
+  },
+  {
+    "title": "Guajira Guantanamera",
+    "artist": "Joseìto Fernàndez",
+    "year": 1929,
+    "previewUrl": "/previews/1.mp3"
+  },
+  {
+    "title": "In The Mood",
+    "artist": "Glenn Miller",
+    "year": 1939,
+    "previewUrl": "/previews/2.mp3"
+  },
+  {
+    "title": "Pack Die Badehose Ein",
+    "artist": "Cornelia Froboess",
+    "year": 1951,
+    "previewUrl": "/previews/3.mp3"
+  },
+  {
+    "title": "Ganz Paris träumt von der Liebe",
+    "artist": "Caterina Valente",
+    "year": 1954,
+    "previewUrl": "/previews/4.mp3"
+  },
+  {
+    "title": "(We're Gonna) Rock Around The Clock",
+    "artist": "Bill Haley & His Comets",
+    "year": 1954,
+    "previewUrl": "/previews/5.mp3"
+  },
+  {
+    "title": "Ain't That A Shame (Live)",
+    "artist": "Fats Domino",
+    "year": 1955,
+    "previewUrl": "/previews/6.mp3"
+  },
+  {
+    "title": "See You Later, Alligator",
+    "artist": "Bill Haley & His Comets",
+    "year": 1956,
+    "previewUrl": "/previews/7.mp3"
+  },
+  {
+    "title": "Heimweh (Brennend heißer Wüstensand, dort wo die Blumen blüh'n, schön war die Zeit) (Neuaufnahme 1991)",
+    "artist": "Freddy Quinn",
+    "year": 1956,
+    "previewUrl": "/previews/8.mp3"
+  },
+  {
+    "title": "At the Hop (Rerecorded)",
+    "artist": "Danny & The Juniors",
+    "year": 1957,
+    "previewUrl": "/previews/9.mp3"
+  },
+  {
+    "title": "Sugar Baby",
+    "artist": "Peter Kraus",
+    "year": 1958,
+    "previewUrl": "/previews/10.mp3"
+  },
+  {
+    "title": "All I Have to Do Is Dream (Single Version; 2006 Remaster)",
+    "artist": "The Everly Brothers",
+    "year": 1958,
+    "previewUrl": "/previews/11.mp3"
+  },
+  {
+    "title": "Die Zuckerpuppe aus der Bauchtanz-Truppe",
+    "artist": "Bill Ramsey",
+    "year": 1961,
+    "previewUrl": "/previews/12.mp3"
+  },
+  {
+    "title": "Ich will 'nen Cowboy als Mann",
+    "artist": "Gitte Hænning",
+    "year": 1963,
+    "previewUrl": "/previews/13.mp3"
+  },
+  {
+    "title": "Wooly Bully",
+    "artist": "Sam the Sham & The Pharaohs",
+    "year": 1965,
+    "previewUrl": "/previews/14.mp3"
+  },
+  {
+    "title": "These Boots Are Made for Walkin'",
+    "artist": "Nancy Sinatra",
+    "year": 1965,
+    "previewUrl": "/previews/15.mp3"
+  },
+  {
+    "title": "I Got You Babe",
+    "artist": "Sonny & Cher",
+    "year": 1965,
+    "previewUrl": "/previews/16.mp3"
+  },
+  {
+    "title": "I'm a Believer (2006 Remaster)",
+    "artist": "The Monkees",
+    "year": 1966,
+    "previewUrl": "/previews/17.mp3"
+  },
+  {
+    "title": "When a Man Loves a Woman",
+    "artist": "Percy Sledge",
+    "year": 1966,
+    "previewUrl": "/previews/18.mp3"
+  },
+  {
+    "title": "Piece of My Heart",
+    "artist": "Erma Franklin",
+    "year": 1967,
+    "previewUrl": "/previews/19.mp3"
+  },
+  {
+    "title": "Born To Be Wild",
+    "artist": "Steppenwolf",
+    "year": 1968,
+    "previewUrl": "/previews/20.mp3"
+  },
+  {
+    "title": "I Heard It Through The Grapevine",
+    "artist": "Marvin Gaye",
+    "year": 1968,
+    "previewUrl": "/previews/21.mp3"
+  },
+  {
+    "title": "Mama",
+    "artist": "Heintje",
+    "year": 1968,
+    "previewUrl": "/previews/22.mp3"
+  },
+  {
+    "title": "Congratulations",
+    "artist": "Cliff Richard",
+    "year": 1968,
+    "previewUrl": "/previews/23.mp3"
+  },
+  {
+    "title": "Whole Lotta Love (Remaster)",
+    "artist": "Led Zeppelin",
+    "year": 1969,
+    "previewUrl": "/previews/24.mp3"
+  },
+  {
+    "title": "Sweet Caroline",
+    "artist": "Neil Diamond",
+    "year": 1969,
+    "previewUrl": "/previews/25.mp3"
+  },
+  {
+    "title": "Get Back (Remastered 2009)",
+    "artist": "The Beatles",
+    "year": 1969,
+    "previewUrl": "/previews/26.mp3"
+  },
+  {
+    "title": "Space Oddity (2015 Remaster)",
+    "artist": "David Bowie",
+    "year": 1969,
+    "previewUrl": "/previews/27.mp3"
+  },
+  {
+    "title": "He Ain't Heavy He's My Brother (2003 Remaster)",
+    "artist": "The Hollies",
+    "year": 1969,
+    "previewUrl": "/previews/28.mp3"
+  },
+  {
+    "title": "In the Summertime",
+    "artist": "Mungo Jerry",
+    "year": 1970,
+    "previewUrl": "/previews/29.mp3"
+  },
+  {
+    "title": "You Can Get It If You Really Want",
+    "artist": "Jimmy Cliff",
+    "year": 1970,
+    "previewUrl": "/previews/30.mp3"
+  },
+  {
+    "title": "Have You Ever Seen The Rain",
+    "artist": "Creedence Clearwater Revival",
+    "year": 1971,
+    "previewUrl": "/previews/31.mp3"
+  },
+  {
+    "title": "She's A Lady",
+    "artist": "Tom Jones",
+    "year": 1971,
+    "previewUrl": "/previews/32.mp3"
+  },
+  {
+    "title": "Eine neue Liebe ist wie ein neues Leben (2009)",
+    "artist": "Jürgen Marcus",
+    "year": 1972,
+    "previewUrl": "/previews/33.mp3"
+  },
+  {
+    "title": "Piano Man",
+    "artist": "Billy Joel",
+    "year": 1973,
+    "previewUrl": "/previews/34.mp3"
+  },
+  {
+    "title": "Jolene",
+    "artist": "Dolly Parton",
+    "year": 1973,
+    "previewUrl": "/previews/35.mp3"
+  },
+  {
+    "title": "No Woman No Cry",
+    "artist": "Bob Marley & The Wailers",
+    "year": 1974,
+    "previewUrl": "/previews/36.mp3"
+  },
+  {
+    "title": "I Can Help",
+    "artist": "Billy Swan",
+    "year": 1974,
+    "previewUrl": "/previews/37.mp3"
+  },
+  {
+    "title": "Waterloo",
+    "artist": "ABBA",
+    "year": 1974,
+    "previewUrl": "/previews/38.mp3"
+  },
+  {
+    "title": "Autobahn (2009 Remaster)",
+    "artist": "Kraftwerk",
+    "year": 1974,
+    "previewUrl": "/previews/39.mp3"
+  },
+  {
+    "title": "The Hustle - Original Mix",
+    "artist": "Van McCoy",
+    "year": 1975,
+    "previewUrl": "/previews/40.mp3"
+  },
+  {
+    "title": "December, 1963 (Oh What a Night!)",
+    "artist": "The Four Seasons",
+    "year": 1975,
+    "previewUrl": "/previews/41.mp3"
+  },
+  {
+    "title": "Wann wird's mal wieder richtig Sommer (Original Mix)",
+    "artist": "Rudi Carrell",
+    "year": 1975,
+    "previewUrl": "/previews/42.mp3"
+  },
+  {
+    "title": "If You Leave Me Now",
+    "artist": "Chicago",
+    "year": 1976,
+    "previewUrl": "/previews/43.mp3"
+  },
+  {
+    "title": "Disco Inferno",
+    "artist": "The Trammps",
+    "year": 1976,
+    "previewUrl": "/previews/44.mp3"
+  },
+  {
+    "title": "More Than a Feeling",
+    "artist": "Boston",
+    "year": 1976,
+    "previewUrl": "/previews/45.mp3"
+  },
+  {
+    "title": "Ein Bett im Kornfeld (Version 2017)",
+    "artist": "Jürgen Drews",
+    "year": 1976,
+    "previewUrl": "/previews/46.mp3"
+  },
+  {
+    "title": "Let's Stick Together",
+    "artist": "Bryan Ferry",
+    "year": 1976,
+    "previewUrl": "/previews/47.mp3"
+  },
+  {
+    "title": "Don't Leave Me This Way",
+    "artist": "Thelma Houston",
+    "year": 1976,
+    "previewUrl": "/previews/48.mp3"
+  },
+  {
+    "title": "When I Need You",
+    "artist": "Leo Sayer",
+    "year": 1977,
+    "previewUrl": "/previews/49.mp3"
+  },
+  {
+    "title": "Ca Plane Pour Moi",
+    "artist": "Plastic Bertrand",
+    "year": 1977,
+    "previewUrl": "/previews/50.mp3"
+  },
+  {
+    "title": "Blue Bayou",
+    "artist": "Linda Ronstadt",
+    "year": 1977,
+    "previewUrl": "/previews/51.mp3"
+  },
+  {
+    "title": "Easy",
+    "artist": "Commodores",
+    "year": 1977,
+    "previewUrl": "/previews/52.mp3"
+  },
+  {
+    "title": "It's a Heartache",
+    "artist": "Bonnie Tyler",
+    "year": 1977,
+    "previewUrl": "/previews/53.mp3"
+  },
+  {
+    "title": "Le Freak",
+    "artist": "Chic",
+    "year": 1978,
+    "previewUrl": "/previews/54.mp3"
+  },
+  {
+    "title": "Über sieben Brücken musst du gehen Live",
+    "artist": "Karat",
+    "year": 1978,
+    "previewUrl": "/previews/55.mp3"
+  },
+  {
+    "title": "Born to Be Alive (The Original)",
+    "artist": "Patrick Hernandez",
+    "year": 1978,
+    "previewUrl": "/previews/56.mp3"
+  },
+  {
+    "title": "Paradise By the Dashboard Light",
+    "artist": "Meat Loaf",
+    "year": 1978,
+    "previewUrl": "/previews/57.mp3"
+  },
+  {
+    "title": "You Make Me Feel (Mighty Real)",
+    "artist": "Sylvester",
+    "year": 1978,
+    "previewUrl": "/previews/58.mp3"
+  },
+  {
+    "title": "La donna è mobile (Rigoletto)",
+    "artist": "Enrico Caruso",
+    "year": 1908,
+    "previewUrl": "/previews/59.mp3"
+  },
+  {
+    "title": "Guajira Guantanamera",
+    "artist": "Joseìto Fernàndez",
+    "year": 1929,
+    "previewUrl": "/previews/60.mp3"
+  },
+  {
+    "title": "Pack Die Badehose Ein",
+    "artist": "Cornelia Froboess",
+    "year": 1951,
+    "previewUrl": "/previews/61.mp3"
+  },
+  {
+    "title": "Ganz Paris träumt von der Liebe",
+    "artist": "Caterina Valente",
+    "year": 1954,
+    "previewUrl": "/previews/62.mp3"
+  },
+  {
+    "title": "Ain't That A Shame (Live)",
+    "artist": "Fats Domino",
+    "year": 1955,
+    "previewUrl": "/previews/63.mp3"
+  },
+  {
+    "title": "Banana Boat Song (day-o)",
+    "artist": "Harry Belafonte",
+    "year": 1956,
+    "previewUrl": "/previews/64.mp3"
+  },
+  {
+    "title": "Heimweh (Brennend heißer Wüstensand, dort wo die Blumen blüh'n, schön war die Zeit) (Neuaufnahme 1991)",
+    "artist": "Freddy Quinn",
+    "year": 1956,
+    "previewUrl": "/previews/65.mp3"
+  },
+  {
+    "title": "At the Hop (Rerecorded)",
+    "artist": "Danny & The Juniors",
+    "year": 1957,
+    "previewUrl": "/previews/66.mp3"
+  },
+  {
+    "title": "Jailhouse Rock",
+    "artist": "Elvis Presley",
+    "year": 1957,
+    "previewUrl": "/previews/67.mp3"
+  },
+  {
+    "title": "Johnny B. Goode",
+    "artist": "Chuck Berry",
+    "year": 1958,
+    "previewUrl": "/previews/68.mp3"
+  },
+  {
+    "title": "Good Golly, Miss Molly",
+    "artist": "Little Richard",
+    "year": 1958,
+    "previewUrl": "/previews/69.mp3"
+  },
+  {
+    "title": "Lollipop",
+    "artist": "The Chordettes",
+    "year": 1958,
+    "previewUrl": "/previews/70.mp3"
+  },
+  {
+    "title": "All I Have to Do Is Dream (Single Version; 2006 Remaster)",
+    "artist": "The Everly Brothers",
+    "year": 1958,
+    "previewUrl": "/previews/71.mp3"
+  },
+  {
+    "title": "La Bamba",
+    "artist": "Ritchie Valens",
+    "year": 1958,
+    "previewUrl": "/previews/72.mp3"
+  },
+  {
+    "title": "Die Gitarre und das Meer",
+    "artist": "Freddy Quinn",
+    "year": 1959,
+    "previewUrl": "/previews/73.mp3"
+  },
+  {
+    "title": "Ich will keine Schokolade",
+    "artist": "Trude Herr",
+    "year": 1960,
+    "previewUrl": "/previews/74.mp3"
+  },
+  {
+    "title": "The Twist",
+    "artist": "Chubby Checker",
+    "year": 1960,
+    "previewUrl": "/previews/75.mp3"
+  },
+  {
+    "title": "Can't Help Falling In Love",
+    "artist": "Elvis Presley",
+    "year": 1961,
+    "previewUrl": "/previews/76.mp3"
+  },
+  {
+    "title": "Die Zuckerpuppe aus der Bauchtanz-Truppe",
+    "artist": "Bill Ramsey",
+    "year": 1961,
+    "previewUrl": "/previews/77.mp3"
+  },
+  {
+    "title": "The Loco Motion",
+    "artist": "Rock And Roll",
+    "year": 1962,
+    "previewUrl": "/previews/78.mp3"
+  },
+  {
+    "title": "Schuld war nur der Bossa Nova",
+    "artist": "Manuela",
+    "year": 1963,
+    "previewUrl": "/previews/79.mp3"
+  },
+  {
+    "title": "Surfin' U.S.A. (Remastered 2001)",
+    "artist": "The Beach Boys",
+    "year": 1963,
+    "previewUrl": "/previews/80.mp3"
+  },
+  {
+    "title": "Ring of Fire",
+    "artist": "Johnny Cash",
+    "year": 1963,
+    "previewUrl": "/previews/81.mp3"
+  },
+  {
+    "title": "Ich will 'nen Cowboy als Mann",
+    "artist": "Gitte Hænning",
+    "year": 1963,
+    "previewUrl": "/previews/82.mp3"
+  },
+  {
+    "title": "Liebeskummer Lohnt Sich Nicht",
+    "artist": "Siw Malmkvist",
+    "year": 1964,
+    "previewUrl": "/previews/83.mp3"
+  },
+  {
+    "title": "It's In The Kiss (The Shoop Shoop Song)",
+    "artist": "Betty Everett",
+    "year": 1964,
+    "previewUrl": "/previews/84.mp3"
+  },
+  {
+    "title": "Do Wah Diddy Diddy (2007 Remaster)",
+    "artist": "Manfred Mann",
+    "year": 1964,
+    "previewUrl": "/previews/85.mp3"
+  },
+  {
+    "title": "Oh, Pretty Woman",
+    "artist": "Roy Orbison",
+    "year": 1964,
+    "previewUrl": "/previews/86.mp3"
+  },
+  {
+    "title": "Schöner fremder Mann",
+    "artist": "Connie Francis",
+    "year": 1964,
+    "previewUrl": "/previews/87.mp3"
+  },
+  {
+    "title": "Marmor, Stein und Eisen bricht",
+    "artist": "Drafi Deutscher",
+    "year": 1965,
+    "previewUrl": "/previews/88.mp3"
+  },
+  {
+    "title": "Wooly Bully",
+    "artist": "Sam the Sham & The Pharaohs",
+    "year": 1965,
+    "previewUrl": "/previews/89.mp3"
+  },
+  {
+    "title": "These Boots Are Made for Walkin'",
+    "artist": "Nancy Sinatra",
+    "year": 1965,
+    "previewUrl": "/previews/90.mp3"
+  },
+  {
+    "title": "I Got You Babe",
+    "artist": "Sonny & Cher",
+    "year": 1965,
+    "previewUrl": "/previews/91.mp3"
+  },
+  {
+    "title": "(I Can't Get No) Satisfaction (Mono)",
+    "artist": "The Rolling Stones",
+    "year": 1965,
+    "previewUrl": "/previews/92.mp3"
+  },
+  {
+    "title": "Siebzehn Jahr, blondes Haar",
+    "artist": "Udo Jürgens",
+    "year": 1965,
+    "previewUrl": "/previews/93.mp3"
+  },
+  {
+    "title": "I'm a Believer (2006 Remaster)",
+    "artist": "The Monkees",
+    "year": 1966,
+    "previewUrl": "/previews/94.mp3"
+  },
+  {
+    "title": "When a Man Loves a Woman",
+    "artist": "Percy Sledge",
+    "year": 1966,
+    "previewUrl": "/previews/95.mp3"
+  },
+  {
+    "title": "You Can't Hurry Love",
+    "artist": "The Supremes",
+    "year": 1966,
+    "previewUrl": "/previews/96.mp3"
+  },
+  {
+    "title": "Good Vibrations (Remastered 2001)",
+    "artist": "The Beach Boys",
+    "year": 1966,
+    "previewUrl": "/previews/97.mp3"
+  },
+  {
+    "title": "Piece of My Heart",
+    "artist": "Erma Franklin",
+    "year": 1967,
+    "previewUrl": "/previews/98.mp3"
+  },
+  {
+    "title": "Respect",
+    "artist": "Aretha Franklin",
+    "year": 1967,
+    "previewUrl": "/previews/99.mp3"
+  },
+  {
+    "title": "Whole Lotta Love (Remaster)",
+    "artist": "Led Zeppelin",
+    "year": 1969,
+    "previewUrl": "/previews/100.mp3"
+  },
+  {
+    "title": "Get Back (Remastered 2009)",
+    "artist": "The Beatles",
+    "year": 1969,
+    "previewUrl": "/previews/101.mp3"
+  },
+  {
+    "title": "Space Oddity (2015 Remaster)",
+    "artist": "David Bowie",
+    "year": 1969,
+    "previewUrl": "/previews/102.mp3"
+  },
+  {
+    "title": "He Ain't Heavy He's My Brother (2003 Remaster)",
+    "artist": "The Hollies",
+    "year": 1969,
+    "previewUrl": "/previews/103.mp3"
+  },
+  {
+    "title": "Your Song",
+    "artist": "Elton John",
+    "year": 1970,
+    "previewUrl": "/previews/104.mp3"
+  },
+  {
+    "title": "In the Summertime",
+    "artist": "Mungo Jerry",
+    "year": 1970,
+    "previewUrl": "/previews/105.mp3"
+  },
+  {
+    "title": "Er hat ein knallrotes Gummiboot",
+    "artist": "Wencke Myhre",
+    "year": 1970,
+    "previewUrl": "/previews/106.mp3"
+  },
+  {
+    "title": "Lola (Remastered 2020)",
+    "artist": "The Kinks",
+    "year": 1970,
+    "previewUrl": "/previews/107.mp3"
+  },
+  {
+    "title": "Have You Ever Seen The Rain",
+    "artist": "Creedence Clearwater Revival",
+    "year": 1971,
+    "previewUrl": "/previews/108.mp3"
+  },
+  {
+    "title": "You're So Vain",
+    "artist": "Carly Simon",
+    "year": 1972,
+    "previewUrl": "/previews/109.mp3"
+  },
+  {
+    "title": "Eine neue Liebe ist wie ein neues Leben (2009)",
+    "artist": "Jürgen Marcus",
+    "year": 1972,
+    "previewUrl": "/previews/110.mp3"
+  },
+  {
+    "title": "Tränen lügen nicht",
+    "artist": "Michael Holm",
+    "year": 1974,
+    "previewUrl": "/previews/111.mp3"
+  },
+  {
+    "title": "Über den Wolken",
+    "artist": "Reinhard Mey",
+    "year": 1974,
+    "previewUrl": "/previews/112.mp3"
+  },
+  {
+    "title": "Sweet Home Alabama",
+    "artist": "Lynyrd Skynyrd",
+    "year": 1974,
+    "previewUrl": "/previews/113.mp3"
+  },
+  {
+    "title": "Autobahn (2009 Remaster)",
+    "artist": "Kraftwerk",
+    "year": 1974,
+    "previewUrl": "/previews/114.mp3"
+  },
+  {
+    "title": "The Hustle - Original Mix",
+    "artist": "Van McCoy",
+    "year": 1975,
+    "previewUrl": "/previews/115.mp3"
+  },
+  {
+    "title": "December, 1963 (Oh What a Night!)",
+    "artist": "The Four Seasons",
+    "year": 1975,
+    "previewUrl": "/previews/116.mp3"
+  },
+  {
+    "title": "Wann wird's mal wieder richtig Sommer (Original Mix)",
+    "artist": "Rudi Carrell",
+    "year": 1975,
+    "previewUrl": "/previews/117.mp3"
+  },
+  {
+    "title": "More Than a Feeling",
+    "artist": "Boston",
+    "year": 1976,
+    "previewUrl": "/previews/118.mp3"
+  },
+  {
+    "title": "Ein Bett im Kornfeld (Version 2017)",
+    "artist": "Jürgen Drews",
+    "year": 1976,
+    "previewUrl": "/previews/119.mp3"
+  },
+  {
+    "title": "It's a Heartache",
+    "artist": "Bonnie Tyler",
+    "year": 1977,
+    "previewUrl": "/previews/120.mp3"
+  },
+  {
+    "title": "Über sieben Brücken musst du gehen Live",
+    "artist": "Karat",
+    "year": 1978,
+    "previewUrl": "/previews/121.mp3"
+  },
+  {
+    "title": "Born to Be Alive (The Original)",
+    "artist": "Patrick Hernandez",
+    "year": 1978,
+    "previewUrl": "/previews/122.mp3"
+  },
+  {
+    "title": "Paradise By the Dashboard Light",
+    "artist": "Meat Loaf",
+    "year": 1978,
+    "previewUrl": "/previews/123.mp3"
+  },
+  {
+    "title": "Moskau",
+    "artist": "Dschinghis Khan",
+    "year": 1979,
+    "previewUrl": "/previews/124.mp3"
+  },
+  {
+    "title": "Knock On Wood",
+    "artist": "Amii Stewart",
+    "year": 1979,
+    "previewUrl": "/previews/125.mp3"
+  },
+  {
+    "title": "Escape (The Pina Colada Song) (Single Version)",
+    "artist": "Rupert Holmes",
+    "year": 1979,
+    "previewUrl": "/previews/126.mp3"
+  },
+  {
+    "title": "We Are Family (1995 Remaster)",
+    "artist": "Sister Sledge",
+    "year": 1979,
+    "previewUrl": "/previews/127.mp3"
+  },
+  {
+    "title": "Upside Down",
+    "artist": "Diana Ross",
+    "year": 1980,
+    "previewUrl": "/previews/128.mp3"
+  },
+  {
+    "title": "Celebration",
+    "artist": "Kool & The Gang",
+    "year": 1980,
+    "previewUrl": "/previews/129.mp3"
+  },
+  {
+    "title": "Bette Davis Eyes",
+    "artist": "Kim Carnes",
+    "year": 1981,
+    "previewUrl": "/previews/130.mp3"
+  },
+  {
+    "title": "Start Me Up (Remastered 2009)",
+    "artist": "The Rolling Stones",
+    "year": 1981,
+    "previewUrl": "/previews/131.mp3"
+  },
+  {
+    "title": "Under Pressure (Remastered 2011)",
+    "artist": "Queen",
+    "year": 1981,
+    "previewUrl": "/previews/132.mp3"
+  },
+  {
+    "title": "Super Freak",
+    "artist": "Rick James",
+    "year": 1981,
+    "previewUrl": "/previews/133.mp3"
+  },
+  {
+    "title": "Don't Stop Believin'",
+    "artist": "Journey",
+    "year": 1981,
+    "previewUrl": "/previews/134.mp3"
+  },
+  {
+    "title": "Skandal im Sperrbezirk",
+    "artist": "Spider Murphy Gang",
+    "year": 1981,
+    "previewUrl": "/previews/135.mp3"
+  },
+  {
+    "title": "Don't You Want Me",
+    "artist": "The Human League",
+    "year": 1981,
+    "previewUrl": "/previews/136.mp3"
+  },
+  {
+    "title": "White Wedding (Pt. 1)",
+    "artist": "Billy Idol",
+    "year": 1982,
+    "previewUrl": "/previews/137.mp3"
+  },
+  {
+    "title": "Major Tom (Völlig losgelöst) (Single Version)",
+    "artist": "Peter Schilling",
+    "year": 1982,
+    "previewUrl": "/previews/138.mp3"
+  },
+  {
+    "title": "Give It Up",
+    "artist": "Kc & The Sunshine Band",
+    "year": 1982,
+    "previewUrl": "/previews/139.mp3"
+  },
+  {
+    "title": "Africa",
+    "artist": "Toto",
+    "year": 1982,
+    "previewUrl": "/previews/140.mp3"
+  },
+  {
+    "title": "Maneater",
+    "artist": "Daryl Hall & John Oates",
+    "year": 1982,
+    "previewUrl": "/previews/141.mp3"
+  },
+  {
+    "title": "Ich will Spaß",
+    "artist": "Markus",
+    "year": 1982,
+    "previewUrl": "/previews/142.mp3"
+  },
+  {
+    "title": "Don't Go (2008 Remaster)",
+    "artist": "Yazoo",
+    "year": 1982,
+    "previewUrl": "/previews/143.mp3"
+  },
+  {
+    "title": "Sweet Dreams (Are Made of This) (2005 Remaster)",
+    "artist": "Eurythmics",
+    "year": 1983,
+    "previewUrl": "/previews/144.mp3"
+  },
+  {
+    "title": "Karma Chameleon",
+    "artist": "Culture Club",
+    "year": 1983,
+    "previewUrl": "/previews/145.mp3"
+  },
+  {
+    "title": "Ain't Nobody",
+    "artist": "Chaka Khan",
+    "year": 1983,
+    "previewUrl": "/previews/146.mp3"
+  },
+  {
+    "title": "Every Breath You Take",
+    "artist": "The Police",
+    "year": 1983,
+    "previewUrl": "/previews/147.mp3"
+  },
+  {
+    "title": "Wahnsinn",
+    "artist": "Wolfgang Petry",
+    "year": 1983,
+    "previewUrl": "/previews/148.mp3"
+  },
+  {
+    "title": "99 Luftballons",
+    "artist": "Nena",
+    "year": 1983,
+    "previewUrl": "/previews/149.mp3"
+  },
+  {
+    "title": "1000 und 1 Nacht (Zoom!)",
+    "artist": "Klaus Lage",
+    "year": 1984,
+    "previewUrl": "/previews/150.mp3"
+  },
+  {
+    "title": "Forever Young",
+    "artist": "Alphaville",
+    "year": 1984,
+    "previewUrl": "/previews/151.mp3"
+  },
+  {
+    "title": "Purple Rain (2015 Paisley Park Remaster)",
+    "artist": "Prince",
+    "year": 1984,
+    "previewUrl": "/previews/152.mp3"
+  },
+  {
+    "title": "Smalltown Boy",
+    "artist": "Bronski Beat",
+    "year": 1984,
+    "previewUrl": "/previews/153.mp3"
+  },
+  {
+    "title": "Männer",
+    "artist": "Herbert Grönemeyer",
+    "year": 1984,
+    "previewUrl": "/previews/154.mp3"
+  },
+  {
+    "title": "Dancing In the Dark",
+    "artist": "Bruce Springsteen",
+    "year": 1984,
+    "previewUrl": "/previews/155.mp3"
+  },
+  {
+    "title": "Never Ending Story",
+    "artist": "Limahl",
+    "year": 1984,
+    "previewUrl": "/previews/156.mp3"
+  },
+  {
+    "title": "Walk Of Life",
+    "artist": "Dire Straits",
+    "year": 1985,
+    "previewUrl": "/previews/157.mp3"
+  },
+  {
+    "title": "Part-Time Lover",
+    "artist": "Stevie Wonder",
+    "year": 1985,
+    "previewUrl": "/previews/158.mp3"
+  },
+  {
+    "title": "Heaven",
+    "artist": "Bryan Adams",
+    "year": 1985,
+    "previewUrl": "/previews/159.mp3"
+  },
+  {
+    "title": "Rock Me Amadeus",
+    "artist": "Falco",
+    "year": 1985,
+    "previewUrl": "/previews/160.mp3"
+  },
+  {
+    "title": "Holding Back the Years (2008 Remaster)",
+    "artist": "Simply Red",
+    "year": 1985,
+    "previewUrl": "/previews/161.mp3"
+  },
+  {
+    "title": "Dancing On The Ceiling",
+    "artist": "Lionel Richie",
+    "year": 1986,
+    "previewUrl": "/previews/162.mp3"
+  },
+  {
+    "title": "You Can Call Me Al",
+    "artist": "Paul Simon",
+    "year": 1986,
+    "previewUrl": "/previews/163.mp3"
+  },
+  {
+    "title": "König von Deutschland",
+    "artist": "Rio Reiser",
+    "year": 1986,
+    "previewUrl": "/previews/164.mp3"
+  },
+  {
+    "title": "True Colors",
+    "artist": "Cyndi Lauper",
+    "year": 1986,
+    "previewUrl": "/previews/165.mp3"
+  },
+  {
+    "title": "Manic Monday",
+    "artist": "The Bangles",
+    "year": 1986,
+    "previewUrl": "/previews/166.mp3"
+  },
+  {
+    "title": "Don't Dream It's Over",
+    "artist": "Crowded House",
+    "year": 1986,
+    "previewUrl": "/previews/167.mp3"
+  },
+  {
+    "title": "I Knew You Were Waiting (For Me)",
+    "artist": "George Michael",
+    "year": 1987,
+    "previewUrl": "/previews/168.mp3"
+  },
+  {
+    "title": "China In Your Hand (Single Version)",
+    "artist": "T'pau",
+    "year": 1987,
+    "previewUrl": "/previews/169.mp3"
+  },
+  {
+    "title": "(I've Had) The Time Of My Life (From \"Dirty Dancing\" Soundtrack)",
+    "artist": "Bill Medley",
+    "year": 1987,
+    "previewUrl": "/previews/170.mp3"
+  },
+  {
+    "title": "Everywhere",
+    "artist": "Fleetwood Mac",
+    "year": 1987,
+    "previewUrl": "/previews/171.mp3"
+  },
+  {
+    "title": "Got My Mind Set on You",
+    "artist": "George Harrison",
+    "year": 1987,
+    "previewUrl": "/previews/172.mp3"
+  },
+  {
+    "title": "I Wanna Dance with Somebody (Who Loves Me)",
+    "artist": "Whitney Houston",
+    "year": 1987,
+    "previewUrl": "/previews/173.mp3"
+  },
+  {
+    "title": "Hungry Eyes (From \"Dirty Dancing\" Soundtrack)",
+    "artist": "Eric Carmen",
+    "year": 1987,
+    "previewUrl": "/previews/174.mp3"
+  },
+  {
+    "title": "Orinoco Flow (Sail Away) (Single Version)",
+    "artist": "Enya",
+    "year": 1988,
+    "previewUrl": "/previews/175.mp3"
+  },
+  {
+    "title": "Fast Car",
+    "artist": "Tracy Chapman",
+    "year": 1988,
+    "previewUrl": "/previews/176.mp3"
+  },
+  {
+    "title": "Gimme Hope Jo'anna",
+    "artist": "Eddy Grant",
+    "year": 1988,
+    "previewUrl": "/previews/177.mp3"
+  },
+  {
+    "title": "Sweet Child O' Mine",
+    "artist": "Guns N' Roses",
+    "year": 1988,
+    "previewUrl": "/previews/178.mp3"
+  },
+  {
+    "title": "The Living Years (2005 Remaster)",
+    "artist": "Mike + The Mechanics",
+    "year": 1988,
+    "previewUrl": "/previews/179.mp3"
+  },
+  {
+    "title": "She Drives Me Crazy (Remastered)",
+    "artist": "Fine Young Cannibals",
+    "year": 1988,
+    "previewUrl": "/previews/180.mp3"
+  },
+  {
+    "title": "Westerland",
+    "artist": "Die Ärzte",
+    "year": 1988,
+    "previewUrl": "/previews/181.mp3"
+  },
+  {
+    "title": "Lambada (Original Version 1989)",
+    "artist": "Kaoma",
+    "year": 1989,
+    "previewUrl": "/previews/182.mp3"
+  },
+  {
+    "title": "Volare (Nel Blu di Pinto di Blu)",
+    "artist": "Gipsy Kings",
+    "year": 1989,
+    "previewUrl": "/previews/183.mp3"
+  },
+  {
+    "title": "Right Here Waiting",
+    "artist": "Richard Marx",
+    "year": 1989,
+    "previewUrl": "/previews/184.mp3"
+  },
+  {
+    "title": "The Best",
+    "artist": "Tina Turner",
+    "year": 1989,
+    "previewUrl": "/previews/185.mp3"
+  },
+  {
+    "title": "Nah Neh Nah",
+    "artist": "Vaya Con Dios",
+    "year": 1990,
+    "previewUrl": "/previews/186.mp3"
+  },
+  {
+    "title": "Nothing Compares 2 U",
+    "artist": "Sinéad O'Connor",
+    "year": 1990,
+    "previewUrl": "/previews/187.mp3"
+  },
+  {
+    "title": "Verdammt Ich lieb' dich",
+    "artist": "Matthias Reim",
+    "year": 1990,
+    "previewUrl": "/previews/188.mp3"
+  },
+  {
+    "title": "Ice Ice Baby",
+    "artist": "Vanilla Ice",
+    "year": 1990,
+    "previewUrl": "/previews/189.mp3"
+  },
+  {
+    "title": "Beinhart",
+    "artist": "Torfrock",
+    "year": 1990,
+    "previewUrl": "/previews/190.mp3"
+  },
+  {
+    "title": "Joyride",
+    "artist": "Roxette",
+    "year": 1991,
+    "previewUrl": "/previews/191.mp3"
+  },
+  {
+    "title": "Wind Of Change",
+    "artist": "Scorpions",
+    "year": 1991,
+    "previewUrl": "/previews/192.mp3"
+  },
+  {
+    "title": "Smells Like Teen Spirit",
+    "artist": "Nirvana",
+    "year": 1991,
+    "previewUrl": "/previews/193.mp3"
+  },
+  {
+    "title": "No Son of Mine (2007 Remaster)",
+    "artist": "Genesis",
+    "year": 1991,
+    "previewUrl": "/previews/194.mp3"
+  },
+  {
+    "title": "Jump Around",
+    "artist": "House of Pain",
+    "year": 1992,
+    "previewUrl": "/previews/195.mp3"
+  },
+  {
+    "title": "Why",
+    "artist": "Annie Lennox",
+    "year": 1992,
+    "previewUrl": "/previews/196.mp3"
+  },
+  {
+    "title": "Friday I'm In Love",
+    "artist": "The Cure",
+    "year": 1992,
+    "previewUrl": "/previews/197.mp3"
+  },
+  {
+    "title": "Informer",
+    "artist": "SNoW",
+    "year": 1992,
+    "previewUrl": "/previews/198.mp3"
+  },
+  {
+    "title": "Everybody Hurts",
+    "artist": "R.E.M.",
+    "year": 1992,
+    "previewUrl": "/previews/199.mp3"
+  },
+  {
+    "title": "All That She Wants",
+    "artist": "Ace of Base",
+    "year": 1992,
+    "previewUrl": "/previews/200.mp3"
+  },
+  {
+    "title": "Das Boot",
+    "artist": "U96",
+    "year": 1992,
+    "previewUrl": "/previews/201.mp3"
+  },
+  {
+    "title": "Under the Bridge",
+    "artist": "Red Hot Chili Peppers",
+    "year": 1992,
+    "previewUrl": "/previews/202.mp3"
+  },
+  {
+    "title": "What Is Love (7” Mix)",
+    "artist": "Haddaway",
+    "year": 1993,
+    "previewUrl": "/previews/203.mp3"
+  },
+  {
+    "title": "I Like to Move It (Erick \"More\" Album Mix)",
+    "artist": "Reel 2 Real",
+    "year": 1993,
+    "previewUrl": "/previews/204.mp3"
+  },
+  {
+    "title": "Mr. Vain (Original Radio Edit)",
+    "artist": "Culture Beat",
+    "year": 1993,
+    "previewUrl": "/previews/205.mp3"
+  },
+  {
+    "title": "Alles nur geklaut",
+    "artist": "Die Prinzen",
+    "year": 1993,
+    "previewUrl": "/previews/206.mp3"
+  },
+  {
+    "title": "Sing Hallelujah! (Short Version)",
+    "artist": "Dr. Alban",
+    "year": 1993,
+    "previewUrl": "/previews/207.mp3"
+  },
+  {
+    "title": "Zombie",
+    "artist": "The Cranberries",
+    "year": 1994,
+    "previewUrl": "/previews/208.mp3"
+  },
+  {
+    "title": "Cotton Eye Joe",
+    "artist": "Rednex",
+    "year": 1994,
+    "previewUrl": "/previews/209.mp3"
+  },
+  {
+    "title": "Love Is All Around (From \"Four Weddings And A Funeral\")",
+    "artist": "Wet Wet Wet",
+    "year": 1994,
+    "previewUrl": "/previews/210.mp3"
+  },
+  {
+    "title": "Captain Jack (Short Mix)",
+    "artist": "Captain Jack",
+    "year": 1995,
+    "previewUrl": "/previews/211.mp3"
+  },
+  {
+    "title": "Wonderwall",
+    "artist": "Oasis",
+    "year": 1995,
+    "previewUrl": "/previews/212.mp3"
+  },
+  {
+    "title": "Gangsta's Paradise",
+    "artist": "Coolio",
+    "year": 1995,
+    "previewUrl": "/previews/213.mp3"
+  },
+  {
+    "title": "Abenteuerland",
+    "artist": "Pur",
+    "year": 1995,
+    "previewUrl": "/previews/214.mp3"
+  },
+  {
+    "title": "MIEF! (Nimm mich jetzt, auch wenn ich stinke) Video Version",
+    "artist": "Die Doofen",
+    "year": 1995,
+    "previewUrl": "https://cdnt-preview.dzcdn.net/api/1/1/3/6/f/0/36f6624dd5684b15b60391ac3f60e448.mp3?hdnea=exp=1778260242~acl=/api/1/1/3/6/f/0/36f6624dd5684b15b60391ac3f60e448.mp3*~data=user_id=0,application_id=42~hmac=5e98160605fcff33afb6030f4dbd5320c5389b4a3a5f63b815d97bd370c6b570"
+  },
+  {
+    "title": "Don't Speak",
+    "artist": "No Doubt",
+    "year": 1996,
+    "previewUrl": "/previews/216.mp3"
+  },
+  {
+    "title": "Return of the Mack",
+    "artist": "Mark Morrison",
+    "year": 1996,
+    "previewUrl": "/previews/217.mp3"
+  },
+  {
+    "title": "Herz an Herz",
+    "artist": "Blümchen",
+    "year": 1996,
+    "previewUrl": "/previews/218.mp3"
+  },
+  {
+    "title": "Killing Me Softly With His Song",
+    "artist": "Fugees",
+    "year": 1996,
+    "previewUrl": "/previews/219.mp3"
+  },
+  {
+    "title": "Più bella cosa",
+    "artist": "Eros Ramazzotti",
+    "year": 1996,
+    "previewUrl": "/previews/220.mp3"
+  },
+  {
+    "title": "Warum?",
+    "artist": "Tic Tac Toe",
+    "year": 1997,
+    "previewUrl": "/previews/221.mp3"
+  },
+  {
+    "title": "My Heart Will Go On (Love Theme from \"Titanic\")",
+    "artist": "Céline Dion",
+    "year": 1997,
+    "previewUrl": "/previews/222.mp3"
+  },
+  {
+    "title": "Bitter Sweet Symphony",
+    "artist": "The Verve",
+    "year": 1997,
+    "previewUrl": "/previews/223.mp3"
+  },
+  {
+    "title": "Torn",
+    "artist": "Natalie Imbruglia",
+    "year": 1997,
+    "previewUrl": "/previews/224.mp3"
+  },
+  {
+    "title": "Save Tonight",
+    "artist": "Eagle-Eye Cherry",
+    "year": 1997,
+    "previewUrl": "/previews/225.mp3"
+  },
+  {
+    "title": "Engel",
+    "artist": "Rammstein",
+    "year": 1997,
+    "previewUrl": "/previews/226.mp3"
+  },
+  {
+    "title": "Everybody (Backstreet's Back) (Radio Edit)",
+    "artist": "Backstreet Boys",
+    "year": 1997,
+    "previewUrl": "/previews/227.mp3"
+  },
+  {
+    "title": "Barbie Girl",
+    "artist": "Aqua",
+    "year": 1997,
+    "previewUrl": "/previews/228.mp3"
+  },
+  {
+    "title": "You Get What You Give",
+    "artist": "New Radicals",
+    "year": 1998,
+    "previewUrl": "/previews/229.mp3"
+  },
+  {
+    "title": "Fly Away",
+    "artist": "Lenny Kravitz",
+    "year": 1998,
+    "previewUrl": "/previews/230.mp3"
+  },
+  {
+    "title": "Stop",
+    "artist": "Spice Girls",
+    "year": 1998,
+    "previewUrl": "/previews/231.mp3"
+  },
+  {
+    "title": "Believe",
+    "artist": "Cher",
+    "year": 1998,
+    "previewUrl": "/previews/232.mp3"
+  },
+  {
+    "title": "The Boy Is Mine",
+    "artist": "Brandy",
+    "year": 1998,
+    "previewUrl": "/previews/233.mp3"
+  },
+  {
+    "title": "Die Eine 2005",
+    "artist": "Die Firma",
+    "year": 1998,
+    "previewUrl": "/previews/234.mp3"
+  },
+  {
+    "title": "Gettin' Jiggy Wit It",
+    "artist": "Will Smith",
+    "year": 1998,
+    "previewUrl": "/previews/235.mp3"
+  },
+  {
+    "title": "If You Had My Love",
+    "artist": "Jennifer Lopez",
+    "year": 1999,
+    "previewUrl": "/previews/236.mp3"
+  },
+  {
+    "title": "Praise You (Radio Edit)",
+    "artist": "Fatboy Slim",
+    "year": 1999,
+    "previewUrl": "/previews/237.mp3"
+  },
+  {
+    "title": "Genie In a Bottle",
+    "artist": "Christina Aguilera",
+    "year": 1999,
+    "previewUrl": "/previews/238.mp3"
+  },
+  {
+    "title": "Du trägst keine Liebe in dir",
+    "artist": "Echt",
+    "year": 1999,
+    "previewUrl": "/previews/239.mp3"
+  },
+  {
+    "title": "Could I Have This Kiss Forever",
+    "artist": "Enrique Iglesias",
+    "year": 2000,
+    "previewUrl": "/previews/240.mp3"
+  },
+  {
+    "title": "Oops!...I Did It Again",
+    "artist": "Britney Spears",
+    "year": 2000,
+    "previewUrl": "/previews/241.mp3"
+  },
+  {
+    "title": "Dancing in the Moonlight",
+    "artist": "Toploader",
+    "year": 2000,
+    "previewUrl": "/previews/242.mp3"
+  },
+  {
+    "title": "It Wasn't Me",
+    "artist": "Shaggy",
+    "year": 2000,
+    "previewUrl": "/previews/243.mp3"
+  },
+  {
+    "title": "One More Time",
+    "artist": "Daft Punk",
+    "year": 2000,
+    "previewUrl": "/previews/244.mp3"
+  },
+  {
+    "title": "It's My Life",
+    "artist": "Bon Jovi",
+    "year": 2000,
+    "previewUrl": "/previews/245.mp3"
+  },
+  {
+    "title": "Lady (Hear Me Tonight) - Remix",
+    "artist": "Modjo",
+    "year": 2000,
+    "previewUrl": "/previews/246.mp3"
+  },
+  {
+    "title": "Whole Again",
+    "artist": "Atomic Kitten",
+    "year": 2001,
+    "previewUrl": "/previews/247.mp3"
+  },
+  {
+    "title": "Fallin'",
+    "artist": "Alicia Keys",
+    "year": 2001,
+    "previewUrl": "/previews/248.mp3"
+  },
+  {
+    "title": "How You Remind Me",
+    "artist": "Nickelback",
+    "year": 2001,
+    "previewUrl": "/previews/249.mp3"
+  },
+  {
+    "title": "Murder On The Dancefloor",
+    "artist": "Sophie Ellis-Bextor",
+    "year": 2001,
+    "previewUrl": "/previews/250.mp3"
+  },
+  {
+    "title": "The Ketchup Song (Aserejé) (Spanish Version)",
+    "artist": "Las Ketchup",
+    "year": 2002,
+    "previewUrl": "/previews/251.mp3"
+  },
+  {
+    "title": "Like a Prayer (Radio Edit)",
+    "artist": "Mad'House",
+    "year": 2002,
+    "previewUrl": "/previews/252.mp3"
+  },
+  {
+    "title": "Ein Kompliment",
+    "artist": "Sportfreunde Stiller",
+    "year": 2002,
+    "previewUrl": "/previews/253.mp3"
+  },
+  {
+    "title": "Dilemma",
+    "artist": "Nelly",
+    "year": 2002,
+    "previewUrl": "/previews/254.mp3"
+  },
+  {
+    "title": "Feel",
+    "artist": "Robbie Williams",
+    "year": 2002,
+    "previewUrl": "/previews/255.mp3"
+  },
+  {
+    "title": "Dragostea din tei",
+    "artist": "O-Zone",
+    "year": 2003,
+    "previewUrl": "/previews/256.mp3"
+  },
+  {
+    "title": "Ab in den Süden (Neuaufnahme)",
+    "artist": "Buddy Poke",
+    "year": 2003,
+    "previewUrl": "/previews/257.mp3"
+  },
+  {
+    "title": "Where Is The Love?",
+    "artist": "Black Eyed Peas",
+    "year": 2003,
+    "previewUrl": "/previews/258.mp3"
+  },
+  {
+    "title": "Crazy In Love (feat. JAY-Z)",
+    "artist": "Beyoncé",
+    "year": 2003,
+    "previewUrl": "/previews/259.mp3"
+  },
+  {
+    "title": "Hey Ya!",
+    "artist": "Outkast",
+    "year": 2003,
+    "previewUrl": "/previews/260.mp3"
+  },
+  {
+    "title": "In Da Club",
+    "artist": "50 Cent",
+    "year": 2003,
+    "previewUrl": "/previews/261.mp3"
+  },
+  {
+    "title": "Sick and Tired",
+    "artist": "Anastacia",
+    "year": 2004,
+    "previewUrl": "/previews/262.mp3"
+  },
+  {
+    "title": "Call on Me (Radio Mix)",
+    "artist": "Eric Prydz",
+    "year": 2004,
+    "previewUrl": "/previews/263.mp3"
+  },
+  {
+    "title": "Numb / Encore",
+    "artist": "JAY Z",
+    "year": 2004,
+    "previewUrl": "/previews/264.mp3"
+  },
+  {
+    "title": "Because of You",
+    "artist": "Kelly Clarkson",
+    "year": 2005,
+    "previewUrl": "/previews/265.mp3"
+  },
+  {
+    "title": "Lonely",
+    "artist": "Akon",
+    "year": 2005,
+    "previewUrl": "/previews/266.mp3"
+  },
+  {
+    "title": "Durch den Monsun (Radio Mix)",
+    "artist": "Tokio Hotel",
+    "year": 2005,
+    "previewUrl": "/previews/267.mp3"
+  },
+  {
+    "title": "Emanuela",
+    "artist": "Fettes Brot",
+    "year": 2005,
+    "previewUrl": "/previews/268.mp3"
+  },
+  {
+    "title": "Talk",
+    "artist": "Coldplay",
+    "year": 2005,
+    "previewUrl": "/previews/269.mp3"
+  },
+  {
+    "title": "Gold Digger",
+    "artist": "Kanye West",
+    "year": 2005,
+    "previewUrl": "/previews/270.mp3"
+  },
+  {
+    "title": "Rehab",
+    "artist": "Amy Winehouse",
+    "year": 2006,
+    "previewUrl": "/previews/271.mp3"
+  },
+  {
+    "title": "Put Your Records On",
+    "artist": "Corinne Bailey Rae",
+    "year": 2006,
+    "previewUrl": "/previews/272.mp3"
+  },
+  {
+    "title": "World Hold On (Children of the Sky) (Radio Edit)",
+    "artist": "Bob Sinclar",
+    "year": 2006,
+    "previewUrl": "/previews/273.mp3"
+  },
+  {
+    "title": "Das Beste",
+    "artist": "Silbermond",
+    "year": 2006,
+    "previewUrl": "/previews/274.mp3"
+  },
+  {
+    "title": "Relax, Take It Easy",
+    "artist": "MIKA",
+    "year": 2007,
+    "previewUrl": "/previews/275.mp3"
+  },
+  {
+    "title": "Junge",
+    "artist": "Die Ärzte",
+    "year": 2007,
+    "previewUrl": "/previews/276.mp3"
+  },
+  {
+    "title": "Do You Know? (The Ping Pong Song)",
+    "artist": "Enrique Iglesias",
+    "year": 2007,
+    "previewUrl": "/previews/277.mp3"
+  },
+  {
+    "title": "No One",
+    "artist": "Alicia Keys",
+    "year": 2007,
+    "previewUrl": "/previews/278.mp3"
+  },
+  {
+    "title": "Vom selben Stern (Radio Edit)",
+    "artist": "Ich + Ich",
+    "year": 2007,
+    "previewUrl": "/previews/279.mp3"
+  },
+  {
+    "title": "Valerie (feat. Amy Winehouse) (Version Revisited)",
+    "artist": "Mark Ronson",
+    "year": 2007,
+    "previewUrl": "/previews/280.mp3"
+  },
+  {
+    "title": "4 Minutes (feat. Justin Timberlake and Timbaland)",
+    "artist": "Madonna",
+    "year": 2008,
+    "previewUrl": "/previews/281.mp3"
+  },
+  {
+    "title": "Poker Face",
+    "artist": "Lady Gaga",
+    "year": 2008,
+    "previewUrl": "/previews/282.mp3"
+  },
+  {
+    "title": "Haus am See",
+    "artist": "Peter Fox",
+    "year": 2008,
+    "previewUrl": "/previews/283.mp3"
+  },
+  {
+    "title": "Mercy",
+    "artist": "Duffy",
+    "year": 2008,
+    "previewUrl": "/previews/284.mp3"
+  },
+  {
+    "title": "Fireflies",
+    "artist": "Owl City",
+    "year": 2009,
+    "previewUrl": "/previews/285.mp3"
+  },
+  {
+    "title": "Whatcha Say",
+    "artist": "Jason Derulo",
+    "year": 2009,
+    "previewUrl": "/previews/286.mp3"
+  },
+  {
+    "title": "Hey, Soul Sister",
+    "artist": "Train",
+    "year": 2009,
+    "previewUrl": "/previews/287.mp3"
+  },
+  {
+    "title": "Waka Waka (This Time for Africa) (feat. Freshlyground)",
+    "artist": "Shakira",
+    "year": 2010,
+    "previewUrl": "/previews/288.mp3"
+  },
+  {
+    "title": "Barbra Streisand (Radio Edit)",
+    "artist": "Duck Sauce",
+    "year": 2010,
+    "previewUrl": "/previews/289.mp3"
+  },
+  {
+    "title": "Firework",
+    "artist": "Katy Perry",
+    "year": 2010,
+    "previewUrl": "/previews/290.mp3"
+  },
+  {
+    "title": "Geboren um zu leben",
+    "artist": "Unheilig",
+    "year": 2010,
+    "previewUrl": "/previews/291.mp3"
+  },
+  {
+    "title": "Price Tag",
+    "artist": "Jessie J",
+    "year": 2011,
+    "previewUrl": "/previews/292.mp3"
+  },
+  {
+    "title": "Set Fire to the Rain",
+    "artist": "Adele",
+    "year": 2011,
+    "previewUrl": "/previews/293.mp3"
+  },
+  {
+    "title": "Nur noch kurz die Welt retten",
+    "artist": "Tim Bendzko",
+    "year": 2011,
+    "previewUrl": "/previews/294.mp3"
+  },
+  {
+    "title": "Can't Hold Us (feat. Ray Dalton)",
+    "artist": "Macklemore",
+    "year": 2011,
+    "previewUrl": "/previews/295.mp3"
+  },
+  {
+    "title": "Hangover",
+    "artist": "Taio Cruz",
+    "year": 2011,
+    "previewUrl": "/previews/296.mp3"
+  },
+  {
+    "title": "Somebody That I Used To Know",
+    "artist": "Gotye",
+    "year": 2011,
+    "previewUrl": "/previews/297.mp3"
+  },
+  {
+    "title": "Moves Like Jagger (Studio Recording From \"The Voice\" Performance)",
+    "artist": "Maroon 5",
+    "year": 2011,
+    "previewUrl": "/previews/298.mp3"
+  },
+  {
+    "title": "Einmal um die Welt",
+    "artist": "CRO",
+    "year": 2012,
+    "previewUrl": "/previews/299.mp3"
+  },
+  {
+    "title": "I Love It (feat. Charli XCX)",
+    "artist": "Icona Pop",
+    "year": 2012,
+    "previewUrl": "/previews/300.mp3"
+  },
+  {
+    "title": "Die Nacht von Freitag auf Montag",
+    "artist": "SDP",
+    "year": 2012,
+    "previewUrl": "/previews/301.mp3"
+  },
+  {
+    "title": "Euphoria",
+    "artist": "Loreen",
+    "year": 2012,
+    "previewUrl": "/previews/302.mp3"
+  },
+  {
+    "title": "Tage wie diese",
+    "artist": "Die Toten Hosen",
+    "year": 2012,
+    "previewUrl": "/previews/303.mp3"
+  },
+  {
+    "title": "Just Give Me a Reason (feat. Nate Ruess)",
+    "artist": "P!nk",
+    "year": 2013,
+    "previewUrl": "/previews/304.mp3"
+  },
+  {
+    "title": "Atemlos durch die Nacht",
+    "artist": "Helene Fischer",
+    "year": 2013,
+    "previewUrl": "/previews/305.mp3"
+  },
+  {
+    "title": "All of Me",
+    "artist": "John Legend",
+    "year": 2013,
+    "previewUrl": "/previews/306.mp3"
+  },
+  {
+    "title": "Happy (From \"Despicable Me 2\")",
+    "artist": "Pharrell Williams",
+    "year": 2013,
+    "previewUrl": "/previews/307.mp3"
+  },
+  {
+    "title": "Blurred Lines",
+    "artist": "Robin Thicke",
+    "year": 2013,
+    "previewUrl": "/previews/308.mp3"
+  },
+  {
+    "title": "Wrecking Ball",
+    "artist": "Miley Cyrus",
+    "year": 2013,
+    "previewUrl": "/previews/309.mp3"
+  },
+  {
+    "title": "Counting Stars",
+    "artist": "OneRepublic",
+    "year": 2013,
+    "previewUrl": "/previews/310.mp3"
+  },
+  {
+    "title": "Auf uns",
+    "artist": "Andreas Bourani",
+    "year": 2014,
+    "previewUrl": "/previews/311.mp3"
+  },
+  {
+    "title": "All About That Bass",
+    "artist": "Meghan Trainor",
+    "year": 2014,
+    "previewUrl": "/previews/312.mp3"
+  },
+  {
+    "title": "7 Years",
+    "artist": "Lukas Graham",
+    "year": 2015,
+    "previewUrl": "/previews/313.mp3"
+  },
+  {
+    "title": "Cheap Thrills",
+    "artist": "Sia",
+    "year": 2015,
+    "previewUrl": "/previews/314.mp3"
+  },
+  {
+    "title": "Lean On",
+    "artist": "Major Lazer",
+    "year": 2015,
+    "previewUrl": "/previews/315.mp3"
+  },
+  {
+    "title": "Scars To Your Beautiful",
+    "artist": "Alessia Cara",
+    "year": 2016,
+    "previewUrl": "/previews/316.mp3"
+  },
+  {
+    "title": "80 Millionen",
+    "artist": "Max Giesinger",
+    "year": 2016,
+    "previewUrl": "/previews/317.mp3"
+  },
+  {
+    "title": "Échame La Culpa",
+    "artist": "Luis Fonsi",
+    "year": 2017,
+    "previewUrl": "/previews/318.mp3"
+  },
+  {
+    "title": "Thunder",
+    "artist": "Imagine Dragons",
+    "year": 2017,
+    "previewUrl": "/previews/319.mp3"
+  },
+  {
+    "title": "Feel It Still",
+    "artist": "Portugal. The Man",
+    "year": 2017,
+    "previewUrl": "/previews/320.mp3"
+  },
+  {
+    "title": "Without You",
+    "artist": "Avicii",
+    "year": 2017,
+    "previewUrl": "/previews/321.mp3"
+  },
+  {
+    "title": "La Cintura",
+    "artist": "Alvaro Soler",
+    "year": 2018,
+    "previewUrl": "/previews/322.mp3"
+  },
+  {
+    "title": "Someone You Loved",
+    "artist": "Lewis Capaldi",
+    "year": 2018,
+    "previewUrl": "/previews/323.mp3"
+  },
+  {
+    "title": "Shallow",
+    "artist": "Lady Gaga",
+    "year": 2018,
+    "previewUrl": "/previews/324.mp3"
+  },
+  {
+    "title": "Señorita",
+    "artist": "Shawn Mendes",
+    "year": 2019,
+    "previewUrl": "/previews/325.mp3"
+  },
+  {
+    "title": "bad guy",
+    "artist": "Billie Eilish",
+    "year": 2019,
+    "previewUrl": "/previews/326.mp3"
+  },
+  {
+    "title": "Dance Monkey",
+    "artist": "Tones and I",
+    "year": 2019,
+    "previewUrl": "/previews/327.mp3"
+  },
+  {
+    "title": "Sucker",
+    "artist": "Jonas Brothers",
+    "year": 2019,
+    "previewUrl": "/previews/328.mp3"
+  },
+  {
+    "title": "Circles",
+    "artist": "Post Malone",
+    "year": 2019,
+    "previewUrl": "/previews/329.mp3"
+  },
+  {
+    "title": "Adore You",
+    "artist": "Harry Styles",
+    "year": 2019,
+    "previewUrl": "/previews/330.mp3"
+  },
+  {
+    "title": "Blinding Lights",
+    "artist": "The Weeknd",
+    "year": 2019,
+    "previewUrl": "/previews/331.mp3"
+  },
+  {
+    "title": "Don't Call Me Up",
+    "artist": "Mabel",
+    "year": 2019,
+    "previewUrl": "/previews/332.mp3"
+  },
+  {
+    "title": "Break My Heart",
+    "artist": "Dua Lipa",
+    "year": 2020,
+    "previewUrl": "/previews/333.mp3"
+  },
+  {
+    "title": "Toosie Slide",
+    "artist": "Drake",
+    "year": 2020,
+    "previewUrl": "/previews/334.mp3"
+  },
+  {
+    "title": "drivers license",
+    "artist": "Olivia Rodrigo",
+    "year": 2021,
+    "previewUrl": "/previews/335.mp3"
+  },
+  {
+    "title": "Die guten Zeiten",
+    "artist": "Wincent Weiss",
+    "year": 2021,
+    "previewUrl": "/previews/336.mp3"
+  },
+  {
+    "title": "Drei Uhr Nachts",
+    "artist": "Mark Forster",
+    "year": 2021,
+    "previewUrl": "/previews/337.mp3"
+  },
+  {
+    "title": "Anyone",
+    "artist": "Justin Bieber",
+    "year": 2021,
+    "previewUrl": "/previews/338.mp3"
+  },
+  {
+    "title": "The Tide Is High",
+    "artist": "Blondie",
+    "year": 1980,
+    "previewUrl": "/previews/339.mp3"
+  },
+  {
+    "title": "Ja, ja, die Katja, die hat ja",
+    "artist": "Heino",
+    "year": 1980,
+    "previewUrl": "/previews/340.mp3"
+  },
+  {
+    "title": "You Drive Me Crazy",
+    "artist": "Shakin' Stevens",
+    "year": 1980,
+    "previewUrl": "/previews/341.mp3"
+  },
+  {
+    "title": "Pan",
+    "artist": "Costa Cordalis",
+    "year": 1980,
+    "previewUrl": "/previews/342.mp3"
+  },
+  {
+    "title": "I Love Rock 'N Roll",
+    "artist": "Joan Jett and the Blackhearts",
+    "year": 1981,
+    "previewUrl": "/previews/343.mp3"
+  },
+  {
+    "title": "Sarà perché ti amo",
+    "artist": "Ricchi e Poveri",
+    "year": 1981,
+    "previewUrl": "/previews/344.mp3"
+  },
+  {
+    "title": "Dich zu lieben",
+    "artist": "Roland Kaiser",
+    "year": 1981,
+    "previewUrl": "/previews/345.mp3"
+  },
+  {
+    "title": "Schickeria",
+    "artist": "Spider Murphy Gang",
+    "year": 1981,
+    "previewUrl": "/previews/346.mp3"
+  },
+  {
+    "title": "Tainted Love",
+    "artist": "Soft Cell",
+    "year": 1981,
+    "previewUrl": "/previews/347.mp3"
+  },
+  {
+    "title": "Up Where We Belong",
+    "artist": "Joe Cocker",
+    "year": 1982,
+    "previewUrl": "/previews/348.mp3"
+  },
+  {
+    "title": "Billie Jean",
+    "artist": "Michael Jackson",
+    "year": 1982,
+    "previewUrl": "/previews/349.mp3"
+  },
+  {
+    "title": "Felicità",
+    "artist": "Al Bano & Romina Power",
+    "year": 1982,
+    "previewUrl": "/previews/350.mp3"
+  },
+  {
+    "title": "More Than This",
+    "artist": "Roxy Music",
+    "year": 1982,
+    "previewUrl": "/previews/351.mp3"
+  },
+  {
+    "title": "Words (Original Version 1983)",
+    "artist": "F.R. David",
+    "year": 1982,
+    "previewUrl": "/previews/352.mp3"
+  },
+  {
+    "title": "It's Raining Men",
+    "artist": "The Weather Girls",
+    "year": 1982,
+    "previewUrl": "/previews/353.mp3"
+  },
+  {
+    "title": "Dolce Vita",
+    "artist": "Ryan Paris",
+    "year": 1983,
+    "previewUrl": "/previews/354.mp3"
+  },
+  {
+    "title": "Uptown Girl",
+    "artist": "Billy Joel",
+    "year": 1983,
+    "previewUrl": "/previews/355.mp3"
+  },
+  {
+    "title": "Flashdance...What a Feeling (Radio Edit)",
+    "artist": "Irene Cara",
+    "year": 1983,
+    "previewUrl": "/previews/356.mp3"
+  },
+  {
+    "title": "Nessaja",
+    "artist": "Peter Maffay",
+    "year": 1983,
+    "previewUrl": "/previews/357.mp3"
+  },
+  {
+    "title": "Total Eclipse of the Heart",
+    "artist": "Bonnie Tyler",
+    "year": 1983,
+    "previewUrl": "/previews/358.mp3"
+  },
+  {
+    "title": "Girls Just Want to Have Fun",
+    "artist": "Cyndi Lauper",
+    "year": 1983,
+    "previewUrl": "/previews/359.mp3"
+  },
+  {
+    "title": "Bodo mit dem Bagger (Live)",
+    "artist": "Mike Krüger",
+    "year": 1983,
+    "previewUrl": "/previews/360.mp3"
+  },
+  {
+    "title": "Take on Me",
+    "artist": "a-ha",
+    "year": 1984,
+    "previewUrl": "/previews/361.mp3"
+  },
+  {
+    "title": "Stay",
+    "artist": "Bonnie Bianco",
+    "year": 1984,
+    "previewUrl": "/previews/362.mp3"
+  },
+  {
+    "title": "Jump (2015 Remaster)",
+    "artist": "Van Halen",
+    "year": 1984,
+    "previewUrl": "/previews/363.mp3"
+  },
+  {
+    "title": "Wake Me Up Before You Go-Go",
+    "artist": "Wham!",
+    "year": 1984,
+    "previewUrl": "/previews/364.mp3"
+  },
+  {
+    "title": "To All the Girls I've Loved Before",
+    "artist": "Julio Iglesias",
+    "year": 1984,
+    "previewUrl": "/previews/365.mp3"
+  },
+  {
+    "title": "Flugzeuge im Bauch",
+    "artist": "Herbert Grönemeyer",
+    "year": 1984,
+    "previewUrl": "/previews/366.mp3"
+  },
+  {
+    "title": "Faust auf Faust (Schimanski) (Remastered 2007)",
+    "artist": "Klaus Lage",
+    "year": 1985,
+    "previewUrl": "/previews/367.mp3"
+  },
+  {
+    "title": "Verliebte Jungs",
+    "artist": "Purple Schulz",
+    "year": 1985,
+    "previewUrl": "/previews/368.mp3"
+  },
+  {
+    "title": "Sommernacht in Rom (Version 2015) (Version 2015)",
+    "artist": "G.G. Anderson",
+    "year": 1985,
+    "previewUrl": "/previews/369.mp3"
+  },
+  {
+    "title": "We Built This City",
+    "artist": "Starship",
+    "year": 1985,
+    "previewUrl": "/previews/370.mp3"
+  },
+  {
+    "title": "The Power Of Love",
+    "artist": "Huey Lewis & The News",
+    "year": 1985,
+    "previewUrl": "/previews/371.mp3"
+  },
+  {
+    "title": "Ba-Ba-Banküberfall (Coverversion - Im Original von: EAV Erste Allgemeine Verunsicherung)",
+    "artist": "Partysingers - The United Dance People",
+    "year": 1985,
+    "previewUrl": "/previews/372.mp3"
+  },
+  {
+    "title": "Holiday",
+    "artist": "The Other Ones",
+    "year": 1986,
+    "previewUrl": "/previews/373.mp3"
+  },
+  {
+    "title": "The Final Countdown",
+    "artist": "Europe",
+    "year": 1986,
+    "previewUrl": "/previews/374.mp3"
+  },
+  {
+    "title": "Walk Like An Egyptian",
+    "artist": "The Bangles",
+    "year": 1986,
+    "previewUrl": "/previews/375.mp3"
+  },
+  {
+    "title": "Hijo de la Luna",
+    "artist": "Mecano",
+    "year": 1986,
+    "previewUrl": "/previews/376.mp3"
+  },
+  {
+    "title": "Livin' On A Prayer",
+    "artist": "Bon Jovi",
+    "year": 1986,
+    "previewUrl": "/previews/377.mp3"
+  },
+  {
+    "title": "Caravan Of Love",
+    "artist": "The Housemartins",
+    "year": 1986,
+    "previewUrl": "/previews/378.mp3"
+  },
+  {
+    "title": "Brother Louie",
+    "artist": "Modern Talking",
+    "year": 1986,
+    "previewUrl": "/previews/379.mp3"
+  },
+  {
+    "title": "Bamboléo",
+    "artist": "Gipsy Kings",
+    "year": 1987,
+    "previewUrl": "/previews/380.mp3"
+  },
+  {
+    "title": "La Bamba",
+    "artist": "Los Lobos",
+    "year": 1987,
+    "previewUrl": "/previews/381.mp3"
+  },
+  {
+    "title": "Heaven Is A Place On Earth",
+    "artist": "Belinda Carlisle",
+    "year": 1987,
+    "previewUrl": "/previews/382.mp3"
+  },
+  {
+    "title": "Blueprint",
+    "artist": "Rainbirds",
+    "year": 1987,
+    "previewUrl": "/previews/383.mp3"
+  },
+  {
+    "title": "Never Gonna Give You Up",
+    "artist": "Rick Astley",
+    "year": 1987,
+    "previewUrl": "/previews/384.mp3"
+  },
+  {
+    "title": "She's Like the Wind (feat. Wendy Fraser) (From \"Dirty Dancing\" Soundtrack)",
+    "artist": "Patrick Swayze",
+    "year": 1987,
+    "previewUrl": "/previews/385.mp3"
+  },
+  {
+    "title": "Don't Worry Be Happy",
+    "artist": "Bobby McFerrin",
+    "year": 1988,
+    "previewUrl": "/previews/386.mp3"
+  },
+  {
+    "title": "Flames Of Love",
+    "artist": "Fancy",
+    "year": 1988,
+    "previewUrl": "/previews/387.mp3"
+  },
+  {
+    "title": "Ship of Fools",
+    "artist": "Erasure",
+    "year": 1988,
+    "previewUrl": "/previews/388.mp3"
+  },
+  {
+    "title": "The Way to Your Heart",
+    "artist": "Soulsister",
+    "year": 1988,
+    "previewUrl": "/previews/389.mp3"
+  },
+  {
+    "title": "Like a Prayer",
+    "artist": "Madonna",
+    "year": 1989,
+    "previewUrl": "/previews/390.mp3"
+  },
+  {
+    "title": "We'll Be Together ('89 Remix Single Version)",
+    "artist": "Sandra",
+    "year": 1989,
+    "previewUrl": "/previews/391.mp3"
+  },
+  {
+    "title": "Love Shack",
+    "artist": "The B-52's",
+    "year": 1989,
+    "previewUrl": "/previews/392.mp3"
+  },
+  {
+    "title": "Another Day in Paradise (2016 Remaster)",
+    "artist": "Phil Collins",
+    "year": 1989,
+    "previewUrl": "/previews/393.mp3"
+  },
+  {
+    "title": "From a Distance",
+    "artist": "Bette Midler",
+    "year": 1990,
+    "previewUrl": "/previews/394.mp3"
+  },
+  {
+    "title": "Freiheit (Live) (2000 Remaster)",
+    "artist": "Westernhagen",
+    "year": 1990,
+    "previewUrl": "/previews/395.mp3"
+  },
+  {
+    "title": "Gonna Make You Sweat (Everybody Dance Now)",
+    "artist": "C & C Music Factory",
+    "year": 1990,
+    "previewUrl": "/previews/396.mp3"
+  },
+  {
+    "title": "It Must Have Been Love (From the Film \"Pretty Woman\")",
+    "artist": "Roxette",
+    "year": 1990,
+    "previewUrl": "/previews/397.mp3"
+  },
+  {
+    "title": "Because I Love You (The Postman Song)",
+    "artist": "Stevie B",
+    "year": 1990,
+    "previewUrl": "/previews/398.mp3"
+  },
+  {
+    "title": "Step by Step",
+    "artist": "New Kids on the Block",
+    "year": 1990,
+    "previewUrl": "/previews/399.mp3"
+  },
+  {
+    "title": "Baby, Baby",
+    "artist": "Amy Grant",
+    "year": 1991,
+    "previewUrl": "/previews/400.mp3"
+  },
+  {
+    "title": "Crucified (Radio Edit)",
+    "artist": "Army of Lovers",
+    "year": 1991,
+    "previewUrl": "/previews/401.mp3"
+  },
+  {
+    "title": "Everybody's Free (To Feel Good)",
+    "artist": "Rozalla",
+    "year": 1991,
+    "previewUrl": "/previews/402.mp3"
+  },
+  {
+    "title": "Losing My Religion",
+    "artist": "R.E.M.",
+    "year": 1991,
+    "previewUrl": "/previews/403.mp3"
+  },
+  {
+    "title": "I'm Too Sexy",
+    "artist": "Right Said Fred",
+    "year": 1991,
+    "previewUrl": "/previews/404.mp3"
+  },
+  {
+    "title": "I Love Your Smile",
+    "artist": "Shanice",
+    "year": 1991,
+    "previewUrl": "/previews/405.mp3"
+  },
+  {
+    "title": "Weather With You",
+    "artist": "Crowded House",
+    "year": 1992,
+    "previewUrl": "/previews/406.mp3"
+  },
+  {
+    "title": "Die Da!?!",
+    "artist": "Die Fantastischen Vier",
+    "year": 1992,
+    "previewUrl": "/previews/407.mp3"
+  },
+  {
+    "title": "Nächstes Mal am Ende der Welt",
+    "artist": "Valerie´s Garten",
+    "year": 1992,
+    "previewUrl": "/previews/408.mp3"
+  },
+  {
+    "title": "Dann küss mich doch",
+    "artist": "Nicole",
+    "year": 1992,
+    "previewUrl": "/previews/409.mp3"
+  },
+  {
+    "title": "Tears in Heaven",
+    "artist": "Eric Clapton",
+    "year": 1992,
+    "previewUrl": "/previews/410.mp3"
+  },
+  {
+    "title": "Achy Breaky Heart",
+    "artist": "Billy Ray Cyrus",
+    "year": 1992,
+    "previewUrl": "/previews/411.mp3"
+  },
+  {
+    "title": "I Will Always Love You",
+    "artist": "Whitney Houston",
+    "year": 1992,
+    "previewUrl": "/previews/412.mp3"
+  },
+  {
+    "title": "Runaway Train (2022 Remaster)",
+    "artist": "Soul Asylum",
+    "year": 1993,
+    "previewUrl": "/previews/413.mp3"
+  },
+  {
+    "title": "Moving on Up",
+    "artist": "M People",
+    "year": 1993,
+    "previewUrl": "/previews/414.mp3"
+  },
+  {
+    "title": "Life (Radio Edit)",
+    "artist": "Haddaway",
+    "year": 1993,
+    "previewUrl": "/previews/415.mp3"
+  },
+  {
+    "title": "Go West (Radio Edit)",
+    "artist": "Pet Shop Boys",
+    "year": 1993,
+    "previewUrl": "/previews/416.mp3"
+  },
+  {
+    "title": "I'd Do Anything For Love (But I Won't Do That) (Radio Edit)",
+    "artist": "Meat Loaf",
+    "year": 1993,
+    "previewUrl": "/previews/417.mp3"
+  },
+  {
+    "title": "Indianer",
+    "artist": "Pur",
+    "year": 1993,
+    "previewUrl": "/previews/418.mp3"
+  },
+  {
+    "title": "Mr. Vain (Original Radio Edit)",
+    "artist": "Culture Beat",
+    "year": 1993,
+    "previewUrl": "/previews/419.mp3"
+  },
+  {
+    "title": "An Angel",
+    "artist": "The Kelly Family",
+    "year": 1994,
+    "previewUrl": "/previews/420.mp3"
+  },
+  {
+    "title": "Im Himmel geht es weiter",
+    "artist": "Matthias Reim",
+    "year": 1994,
+    "previewUrl": "/previews/421.mp3"
+  },
+  {
+    "title": "7 Seconds (feat. Neneh Cherry)",
+    "artist": "Youssou N'dour",
+    "year": 1994,
+    "previewUrl": "/previews/422.mp3"
+  },
+  {
+    "title": "Flying",
+    "artist": "Nice Little Penguins",
+    "year": 1994,
+    "previewUrl": "/previews/423.mp3"
+  },
+  {
+    "title": "Here I Go Again (Extended Version)",
+    "artist": "Bnd",
+    "year": 1995,
+    "previewUrl": "/previews/424.mp3"
+  },
+  {
+    "title": "Bronze, Silber und Gold Radio Version",
+    "artist": "Wolfgang Petry",
+    "year": 1995,
+    "previewUrl": "/previews/425.mp3"
+  },
+  {
+    "title": "Scatman (ski-ba-bop-ba-dop-bop)",
+    "artist": "Scatman John",
+    "year": 1995,
+    "previewUrl": "/previews/426.mp3"
+  },
+  {
+    "title": "Ironic",
+    "artist": "Alanis Morissette",
+    "year": 1995,
+    "previewUrl": "/previews/427.mp3"
+  },
+  {
+    "title": "Back for Good (Radio Mix)",
+    "artist": "Take That",
+    "year": 1995,
+    "previewUrl": "/previews/428.mp3"
+  },
+  {
+    "title": "Boombastic",
+    "artist": "Shaggy",
+    "year": 1995,
+    "previewUrl": "/previews/429.mp3"
+  },
+  {
+    "title": "It's My Life",
+    "artist": "DJ BoBo",
+    "year": 1996,
+    "previewUrl": "/previews/430.mp3"
+  },
+  {
+    "title": "Un-Break My Heart",
+    "artist": "Toni Braxton",
+    "year": 1996,
+    "previewUrl": "/previews/431.mp3"
+  },
+  {
+    "title": "A Neverending Dream",
+    "artist": "X-Perience",
+    "year": 1996,
+    "previewUrl": "/previews/432.mp3"
+  },
+  {
+    "title": "Because You Loved Me (Theme from \"Up Close and Personal\")",
+    "artist": "Céline Dion",
+    "year": 1996,
+    "previewUrl": "/previews/433.mp3"
+  },
+  {
+    "title": "Everybody (Backstreet's Back) (Radio Edit)",
+    "artist": "Backstreet Boys",
+    "year": 1997,
+    "previewUrl": "/previews/434.mp3"
+  },
+  {
+    "title": "Spice Up Your Life",
+    "artist": "Spice Girls",
+    "year": 1997,
+    "previewUrl": "/previews/435.mp3"
+  },
+  {
+    "title": "Jojo Action",
+    "artist": "Mr. President",
+    "year": 1997,
+    "previewUrl": "/previews/436.mp3"
+  },
+  {
+    "title": "Ich bin nicht mehr Dein Clown",
+    "artist": "Olaf Henning",
+    "year": 1997,
+    "previewUrl": "/previews/437.mp3"
+  },
+  {
+    "title": "Rescue Me",
+    "artist": "Big Tim",
+    "year": 1997,
+    "previewUrl": "/previews/438.mp3"
+  },
+  {
+    "title": "Out Of The Dark",
+    "artist": "Falco",
+    "year": 1998,
+    "previewUrl": "/previews/439.mp3"
+  },
+  {
+    "title": "Strong Enough",
+    "artist": "Cher",
+    "year": 1998,
+    "previewUrl": "/previews/440.mp3"
+  },
+  {
+    "title": "How Will I Know (Who You Are)",
+    "artist": "Jessica",
+    "year": 1998,
+    "previewUrl": "/previews/441.mp3"
+  },
+  {
+    "title": "Summer Son",
+    "artist": "Texas",
+    "year": 1999,
+    "previewUrl": "/previews/442.mp3"
+  },
+  {
+    "title": "Radio",
+    "artist": "The Corrs",
+    "year": 1999,
+    "previewUrl": "/previews/443.mp3"
+  },
+  {
+    "title": "Bring It All Back",
+    "artist": "S Club",
+    "year": 1999,
+    "previewUrl": "/previews/444.mp3"
+  },
+  {
+    "title": "...Baby One More Time",
+    "artist": "Britney Spears",
+    "year": 1999,
+    "previewUrl": "/previews/445.mp3"
+  },
+  {
+    "title": "Livin' la Vida Loca",
+    "artist": "Ricky Martin",
+    "year": 1999,
+    "previewUrl": "/previews/446.mp3"
+  },
+  {
+    "title": "Sexbomb",
+    "artist": "Tom Jones",
+    "year": 1999,
+    "previewUrl": "/previews/447.mp3"
+  },
+  {
+    "title": "Beautiful Day",
+    "artist": "U2",
+    "year": 2000,
+    "previewUrl": "/previews/448.mp3"
+  },
+  {
+    "title": "Bye Bye Bye",
+    "artist": "*NSYNC",
+    "year": 2000,
+    "previewUrl": "/previews/449.mp3"
+  },
+  {
+    "title": "She's Got That Light",
+    "artist": "Orange Blue",
+    "year": 2000,
+    "previewUrl": "/previews/450.mp3"
+  },
+  {
+    "title": "I'm Outta Love",
+    "artist": "Anastacia",
+    "year": 2000,
+    "previewUrl": "/previews/451.mp3"
+  },
+  {
+    "title": "Wer Liebe lebt (Version 2022)",
+    "artist": "Michelle",
+    "year": 2001,
+    "previewUrl": "/previews/452.mp3"
+  },
+  {
+    "title": "Deutschland (Radio Mix)",
+    "artist": "Die Prinzen",
+    "year": 2001,
+    "previewUrl": "/previews/453.mp3"
+  },
+  {
+    "title": "Can't Get You out of My Head",
+    "artist": "Kylie Minogue",
+    "year": 2001,
+    "previewUrl": "/previews/454.mp3"
+  },
+  {
+    "title": "Wenn das Liebe ist (Director's Cut)",
+    "artist": "GLASHAUS",
+    "year": 2001,
+    "previewUrl": "/previews/455.mp3"
+  },
+  {
+    "title": "Forever in Love",
+    "artist": "Sylver",
+    "year": 2001,
+    "previewUrl": "/previews/456.mp3"
+  },
+  {
+    "title": "Beautiful",
+    "artist": "Christina Aguilera",
+    "year": 2002,
+    "previewUrl": "/previews/457.mp3"
+  },
+  {
+    "title": "Soak Up The Sun",
+    "artist": "Sheryl Crow",
+    "year": 2002,
+    "previewUrl": "/previews/458.mp3"
+  },
+  {
+    "title": "Complicated",
+    "artist": "Avril Lavigne",
+    "year": 2002,
+    "previewUrl": "/previews/459.mp3"
+  },
+  {
+    "title": "A Thousand Miles",
+    "artist": "Vanessa Carlton",
+    "year": 2002,
+    "previewUrl": "/previews/460.mp3"
+  },
+  {
+    "title": "Désenchantée",
+    "artist": "Kate Ryan",
+    "year": 2002,
+    "previewUrl": "/previews/461.mp3"
+  },
+  {
+    "title": "Just More (Single Edition)",
+    "artist": "Wonderwall",
+    "year": 2002,
+    "previewUrl": "/previews/462.mp3"
+  },
+  {
+    "title": "White Flag",
+    "artist": "Dido",
+    "year": 2003,
+    "previewUrl": "/previews/463.mp3"
+  },
+  {
+    "title": "Bring Me To Life",
+    "artist": "Evanescence",
+    "year": 2003,
+    "previewUrl": "/previews/464.mp3"
+  },
+  {
+    "title": "Free Like the Wind",
+    "artist": "Alexander",
+    "year": 2003,
+    "previewUrl": "/previews/465.mp3"
+  },
+  {
+    "title": "Music Is The Key",
+    "artist": "Sarah Connor",
+    "year": 2003,
+    "previewUrl": "/previews/466.mp3"
+  },
+  {
+    "title": "The Weekend (Radio Edit)",
+    "artist": "Michael Gray",
+    "year": 2004,
+    "previewUrl": "/previews/467.mp3"
+  },
+  {
+    "title": "Sie liebt den DJ (2004)",
+    "artist": "Michael Wendler",
+    "year": 2004,
+    "previewUrl": "/previews/468.mp3"
+  },
+  {
+    "title": "From Paris to Berlin",
+    "artist": "Infernal",
+    "year": 2004,
+    "previewUrl": "/previews/469.mp3"
+  },
+  {
+    "title": "Symphonie",
+    "artist": "Silbermond",
+    "year": 2004,
+    "previewUrl": "/previews/470.mp3"
+  },
+  {
+    "title": "First Day of My Life",
+    "artist": "Melanie C",
+    "year": 2005,
+    "previewUrl": "/previews/471.mp3"
+  },
+  {
+    "title": "Hips Don't Lie (feat. Wyclef Jean)",
+    "artist": "Shakira",
+    "year": 2005,
+    "previewUrl": "/previews/472.mp3"
+  },
+  {
+    "title": "I Believe (Radio Edit)",
+    "artist": "Joana Zimmer",
+    "year": 2005,
+    "previewUrl": "/previews/473.mp3"
+  },
+  {
+    "title": "You're Beautiful",
+    "artist": "James Blunt",
+    "year": 2005,
+    "previewUrl": "/previews/474.mp3"
+  },
+  {
+    "title": "I Don't Feel Like Dancin' (Radio Edit)",
+    "artist": "Scissor Sisters",
+    "year": 2006,
+    "previewUrl": "/previews/475.mp3"
+  },
+  {
+    "title": "Say It Right",
+    "artist": "Nelly Furtado",
+    "year": 2006,
+    "previewUrl": "/previews/476.mp3"
+  },
+  {
+    "title": "Ein Stern (der deinen Namen trägt) (Party Mix)",
+    "artist": "DJ Ötzi",
+    "year": 2006,
+    "previewUrl": "/previews/477.mp3"
+  },
+  {
+    "title": "This Is The Life",
+    "artist": "Amy Macdonald",
+    "year": 2007,
+    "previewUrl": "/previews/478.mp3"
+  },
+  {
+    "title": "Bleeding Love",
+    "artist": "Leona Lewis",
+    "year": 2007,
+    "previewUrl": "/previews/479.mp3"
+  },
+  {
+    "title": "Don't Stop The Music",
+    "artist": "Rihanna",
+    "year": 2007,
+    "previewUrl": "/previews/480.mp3"
+  },
+  {
+    "title": "Soulmate",
+    "artist": "Natasha Bedingfield",
+    "year": 2007,
+    "previewUrl": "/previews/481.mp3"
+  },
+  {
+    "title": "Ruby",
+    "artist": "Kaiser Chiefs",
+    "year": 2007,
+    "previewUrl": "/previews/482.mp3"
+  },
+  {
+    "title": "Human",
+    "artist": "The Killers",
+    "year": 2008,
+    "previewUrl": "/previews/483.mp3"
+  },
+  {
+    "title": "Viva La Vida",
+    "artist": "Coldplay",
+    "year": 2008,
+    "previewUrl": "/previews/484.mp3"
+  },
+  {
+    "title": "Gib mir Sonne",
+    "artist": "Rosenstolz",
+    "year": 2008,
+    "previewUrl": "/previews/485.mp3"
+  },
+  {
+    "title": "Summer Love (Single Version)",
+    "artist": "Mark Medlock",
+    "year": 2008,
+    "previewUrl": "/previews/486.mp3"
+  },
+  {
+    "title": "I Kissed A Girl",
+    "artist": "Katy Perry",
+    "year": 2008,
+    "previewUrl": "/previews/487.mp3"
+  },
+  {
+    "title": "Amoi seg' ma uns wieder (Radio Version)",
+    "artist": "Andreas Gabalier",
+    "year": 2008,
+    "previewUrl": "/previews/488.mp3"
+  },
+  {
+    "title": "I'm Yours",
+    "artist": "Jason Mraz",
+    "year": 2008,
+    "previewUrl": "/previews/489.mp3"
+  },
+  {
+    "title": "Not Fair",
+    "artist": "Lily Allen",
+    "year": 2009,
+    "previewUrl": "/previews/490.mp3"
+  },
+  {
+    "title": "When Love Takes Over (feat. Kelly Rowland)",
+    "artist": "David Guetta",
+    "year": 2009,
+    "previewUrl": "/previews/491.mp3"
+  },
+  {
+    "title": "TiK ToK",
+    "artist": "Kesha",
+    "year": 2009,
+    "previewUrl": "/previews/492.mp3"
+  },
+  {
+    "title": "Ayo Technology",
+    "artist": "Milow",
+    "year": 2009,
+    "previewUrl": "/previews/493.mp3"
+  },
+  {
+    "title": "My Life Would Suck Without You",
+    "artist": "Kelly Clarkson",
+    "year": 2009,
+    "previewUrl": "/previews/494.mp3"
+  },
+  {
+    "title": "Küss mich, halt mich, lieb mich (Felix Harrer x Jaques Raupé Remix)",
+    "artist": "Ella Endlich",
+    "year": 2009,
+    "previewUrl": "/previews/495.mp3"
+  },
+  {
+    "title": "Break Your Heart",
+    "artist": "Taio Cruz",
+    "year": 2009,
+    "previewUrl": "/previews/496.mp3"
+  },
+  {
+    "title": "Just the Way You Are",
+    "artist": "Bruno Mars",
+    "year": 2010,
+    "previewUrl": "/previews/497.mp3"
+  },
+  {
+    "title": "Baby",
+    "artist": "Justin Bieber",
+    "year": 2010,
+    "previewUrl": "/previews/498.mp3"
+  },
+  {
+    "title": "Stay",
+    "artist": "Hurts",
+    "year": 2010,
+    "previewUrl": "/previews/499.mp3"
+  },
+  {
+    "title": "Amazing",
+    "artist": "INNA",
+    "year": 2010,
+    "previewUrl": "/previews/500.mp3"
+  },
+  {
+    "title": "Rolling in the Deep",
+    "artist": "Adele",
+    "year": 2010,
+    "previewUrl": "/previews/501.mp3"
+  },
+  {
+    "title": "Hello (Single Edit)",
+    "artist": "Martin Solveig",
+    "year": 2010,
+    "previewUrl": "/previews/502.mp3"
+  },
+  {
+    "title": "Domino",
+    "artist": "Jessie J",
+    "year": 2011,
+    "previewUrl": "/previews/503.mp3"
+  },
+  {
+    "title": "Video Games",
+    "artist": "Lana Del Rey",
+    "year": 2011,
+    "previewUrl": "/previews/504.mp3"
+  },
+  {
+    "title": "New Age",
+    "artist": "Marlon Roudette",
+    "year": 2011,
+    "previewUrl": "/previews/505.mp3"
+  },
+  {
+    "title": "Nur in meinem Kopf (Radio Edit)",
+    "artist": "Andreas Bourani",
+    "year": 2011,
+    "previewUrl": "/previews/506.mp3"
+  },
+  {
+    "title": "The Edge Of Glory",
+    "artist": "Lady Gaga",
+    "year": 2011,
+    "previewUrl": "/previews/507.mp3"
+  },
+  {
+    "title": "I Follow Rivers (Live @ Giel)",
+    "artist": "Triggerfinger",
+    "year": 2012,
+    "previewUrl": "/previews/508.mp3"
+  },
+  {
+    "title": "Whistle",
+    "artist": "Flo Rida",
+    "year": 2012,
+    "previewUrl": "/previews/509.mp3"
+  },
+  {
+    "title": "Candy",
+    "artist": "Robbie Williams",
+    "year": 2012,
+    "previewUrl": "/previews/510.mp3"
+  },
+  {
+    "title": "We Are Young (feat. Janelle Monáe)",
+    "artist": "fun.",
+    "year": 2012,
+    "previewUrl": "/previews/511.mp3"
+  },
+  {
+    "title": "Girl on Fire",
+    "artist": "Alicia Keys",
+    "year": 2012,
+    "previewUrl": "/previews/512.mp3"
+  },
+  {
+    "title": "Drive By",
+    "artist": "Train",
+    "year": 2012,
+    "previewUrl": "/previews/513.mp3"
+  },
+  {
+    "title": "Story of My Life",
+    "artist": "One Direction",
+    "year": 2013,
+    "previewUrl": "/previews/514.mp3"
+  },
+  {
+    "title": "Rude",
+    "artist": "Magic!",
+    "year": 2013,
+    "previewUrl": "/previews/515.mp3"
+  },
+  {
+    "title": "Budapest",
+    "artist": "George Ezra",
+    "year": 2013,
+    "previewUrl": "/previews/516.mp3"
+  },
+  {
+    "title": "Geronimo",
+    "artist": "Sheppard",
+    "year": 2014,
+    "previewUrl": "/previews/517.mp3"
+  },
+  {
+    "title": "Als wär's das erste Mal",
+    "artist": "Unheilig",
+    "year": 2014,
+    "previewUrl": "/previews/518.mp3"
+  },
+  {
+    "title": "Black Saturday",
+    "artist": "Mando Diao",
+    "year": 2014,
+    "previewUrl": "/previews/519.mp3"
+  },
+  {
+    "title": "Shake It Off",
+    "artist": "Taylor Swift",
+    "year": 2014,
+    "previewUrl": "/previews/520.mp3"
+  },
+  {
+    "title": "Superheroes",
+    "artist": "The Script",
+    "year": 2014,
+    "previewUrl": "/previews/521.mp3"
+  },
+  {
+    "title": "Shut Up and Dance",
+    "artist": "Walk The Moon",
+    "year": 2014,
+    "previewUrl": "/previews/522.mp3"
+  },
+  {
+    "title": "Chandelier",
+    "artist": "Sia",
+    "year": 2014,
+    "previewUrl": "/previews/523.mp3"
+  },
+  {
+    "title": "Marvin Gaye (feat. Meghan Trainor)",
+    "artist": "Charlie Puth",
+    "year": 2015,
+    "previewUrl": "/previews/524.mp3"
+  },
+  {
+    "title": "Book Of Love",
+    "artist": "Felix Jaehn",
+    "year": 2015,
+    "previewUrl": "/previews/525.mp3"
+  },
+  {
+    "title": "Love Me Like You Do (From \"Fifty Shades Of Grey\")",
+    "artist": "Ellie Goulding",
+    "year": 2015,
+    "previewUrl": "/previews/526.mp3"
+  },
+  {
+    "title": "King",
+    "artist": "Olly Alexander (Years & Years)",
+    "year": 2015,
+    "previewUrl": "/previews/527.mp3"
+  },
+  {
+    "title": "Ich werde lächeln wenn Du gehst",
+    "artist": "Andrea Berg",
+    "year": 2016,
+    "previewUrl": "/previews/528.mp3"
+  },
+  {
+    "title": "Keeping Your Head Up",
+    "artist": "Birdy",
+    "year": 2016,
+    "previewUrl": "/previews/529.mp3"
+  },
+  {
+    "title": "Rockabye (feat. Sean Paul & Anne-Marie)",
+    "artist": "Clean Bandit",
+    "year": 2016,
+    "previewUrl": "/previews/530.mp3"
+  },
+  {
+    "title": "Mercy",
+    "artist": "Shawn Mendes",
+    "year": 2016,
+    "previewUrl": "/previews/531.mp3"
+  },
+  {
+    "title": "Perfect Strangers",
+    "artist": "Jonas Blue",
+    "year": 2016,
+    "previewUrl": "/previews/532.mp3"
+  },
+  {
+    "title": "Échame La Culpa",
+    "artist": "Luis Fonsi",
+    "year": 2017,
+    "previewUrl": "/previews/533.mp3"
+  },
+  {
+    "title": "It Ain't Me",
+    "artist": "Kygo",
+    "year": 2017,
+    "previewUrl": "/previews/534.mp3"
+  },
+  {
+    "title": "Herzbeben",
+    "artist": "Helene Fischer",
+    "year": 2017,
+    "previewUrl": "/previews/535.mp3"
+  },
+  {
+    "title": "Was für eine geile Zeit",
+    "artist": "Ben Zucker",
+    "year": 2017,
+    "previewUrl": "/previews/536.mp3"
+  },
+  {
+    "title": "Whatever It Takes",
+    "artist": "Imagine Dragons",
+    "year": 2017,
+    "previewUrl": "/previews/537.mp3"
+  },
+  {
+    "title": "Issues",
+    "artist": "Julia Michaels",
+    "year": 2017,
+    "previewUrl": "/previews/538.mp3"
+  },
+  {
+    "title": "Promises",
+    "artist": "Calvin Harris",
+    "year": 2018,
+    "previewUrl": "/previews/539.mp3"
+  },
+  {
+    "title": "Anywhere",
+    "artist": "Rita Ora",
+    "year": 2018,
+    "previewUrl": "/previews/540.mp3"
+  },
+  {
+    "title": "High Hopes",
+    "artist": "Panic! At the Disco",
+    "year": 2018,
+    "previewUrl": "/previews/541.mp3"
+  },
+  {
+    "title": "Arcade",
+    "artist": "Duncan Laurence",
+    "year": 2019,
+    "previewUrl": "/previews/542.mp3"
+  },
+  {
+    "title": "Save Your Tears",
+    "artist": "The Weeknd",
+    "year": 2019,
+    "previewUrl": "/previews/543.mp3"
+  },
+  {
+    "title": "Post Malone (feat. RANI)",
+    "artist": "Sam Feldt",
+    "year": 2019,
+    "previewUrl": "/previews/544.mp3"
+  },
+  {
+    "title": "Head & Heart (feat. MNEK)",
+    "artist": "Joel Corry",
+    "year": 2020,
+    "previewUrl": "/previews/545.mp3"
+  },
+  {
+    "title": "Dynamite",
+    "artist": "BTS",
+    "year": 2020,
+    "previewUrl": "/previews/546.mp3"
+  },
+  {
+    "title": "Levitating",
+    "artist": "Dua Lipa",
+    "year": 2020,
+    "previewUrl": "/previews/547.mp3"
+  },
+  {
+    "title": "Kings & Queens",
+    "artist": "Ava Max",
+    "year": 2020,
+    "previewUrl": "/previews/548.mp3"
+  },
+  {
+    "title": "Never Going Home",
+    "artist": "Kungs",
+    "year": 2021,
+    "previewUrl": "/previews/549.mp3"
+  },
+  {
+    "title": "Wasted Love (feat. Lagique)",
+    "artist": "Ofenbach",
+    "year": 2021,
+    "previewUrl": "/previews/550.mp3"
+  },
+  {
+    "title": "Bad Habits",
+    "artist": "Ed Sheeran",
+    "year": 2021,
+    "previewUrl": "/previews/551.mp3"
+  },
+  {
+    "title": "We Are The People (feat. Bono & The Edge) (Official UEFA EURO 2020 Song)",
+    "artist": "Martin Garrix",
+    "year": 2021,
+    "previewUrl": "/previews/552.mp3"
+  },
+  {
+    "title": "Magia",
+    "artist": "Alvaro Soler",
+    "year": 2021,
+    "previewUrl": "/previews/553.mp3"
+  },
+  {
+    "title": "About Damn Time",
+    "artist": "Lizzo",
+    "year": 2022,
+    "previewUrl": "/previews/554.mp3"
+  },
+  {
+    "title": "I Ain't Worried",
+    "artist": "OneRepublic",
+    "year": 2022,
+    "previewUrl": "/previews/555.mp3"
+  },
+  {
+    "title": "Made You Look",
+    "artist": "Meghan Trainor",
+    "year": 2022,
+    "previewUrl": "/previews/556.mp3"
+  },
+  {
+    "title": "As It Was",
+    "artist": "Harry Styles",
+    "year": 2022,
+    "previewUrl": "/previews/557.mp3"
+  },
+  {
+    "title": "TRUSTFALL",
+    "artist": "P!nk",
+    "year": 2023,
+    "previewUrl": "/previews/558.mp3"
+  },
+  {
+    "title": "(It Goes Like) Nanana (Edit)",
+    "artist": "Peggy Gou",
+    "year": 2023,
+    "previewUrl": "/previews/559.mp3"
+  }
+]

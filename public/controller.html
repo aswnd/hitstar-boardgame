@@ -1,0 +1,1383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Hitstar Controller</title>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+  body {
+    background: #080818;
+    color: #fff;
+    font-family: 'Poppins', 'Segoe UI', system-ui, sans-serif;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  body::before {
+    content: '';
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background:
+      radial-gradient(ellipse 60% 40% at 20% 0%, rgba(124,58,237,.22) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 35% at 80% 0%, rgba(233,30,99,.18) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 30% at 50% 100%, rgba(0,188,212,.12) 0%, transparent 70%);
+    animation: ctrl-bg 10s ease-in-out infinite alternate;
+  }
+  @keyframes ctrl-bg {
+    from { opacity:.7; }
+    to   { opacity:1; }
+  }
+
+  /* ── Join screen ── */
+  #join-screen {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 24px 20px;
+    overflow-y: auto;
+  }
+
+  #join-screen h1 { font-size: 2rem; color: #f1c40f; letter-spacing: 4px; }
+
+  #avatar-preview {
+    width: 88px; height: 88px;
+    border-radius: 18px;
+    border: 2px solid #2a2a4a;
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+    background: #1e1e3a;
+    flex-shrink: 0;
+  }
+  #avatar-preview img { width: 100%; height: 100%; object-fit: cover; display: none; }
+  #avatar-placeholder { font-size: 2.2rem; }
+
+  #emoji-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .emoji-btn {
+    aspect-ratio: 1;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    background: #1e1e3a;
+    font-size: 1.5rem;
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: border-color 0.15s;
+  }
+  .emoji-btn.selected { border-color: #f1c40f; background: #f1c40f18; }
+  .emoji-btn:active { opacity: 0.7; }
+  .emoji-btn:disabled { opacity: 0.2; cursor: not-allowed; position: relative; }
+  .emoji-btn:disabled::after {
+    content: '✗';
+    position: absolute;
+    font-size: 0.9rem;
+    color: #e74c3c;
+    bottom: 3px;
+    right: 3px;
+    line-height: 1;
+  }
+
+  #upload-label {
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    gap: 8px;
+    width: 100%; max-width: 320px;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px dashed #3a3a5a;
+    background: transparent;
+    color: #888;
+    font-size: 0.9rem;
+  }
+  #upload-label:active { opacity: 0.7; }
+
+  #join-screen input[type=text] {
+    width: 100%;
+    max-width: 320px;
+    padding: 16px 20px;
+    font-size: 1.3rem;
+    border-radius: 12px;
+    border: 2px solid #2a2a4a;
+    background: #1e1e3a;
+    color: #fff;
+    text-align: center;
+    outline: none;
+  }
+  #join-screen input[type=text]:focus { border-color: #f1c40f; }
+
+  /* ── Game screen ── */
+  #game-screen { display: none; flex: 1; flex-direction: column; }
+
+  /* Header strip */
+  #player-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: #16162a;
+    border-bottom: 1px solid #2a2a4a;
+    flex-shrink: 0;
+  }
+
+  #player-avatar {
+    width: 40px; height: 40px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 1.1rem;
+  }
+
+  #player-name-label { font-size: 1rem; font-weight: 600; }
+  #host-badge {
+    margin-left: auto;
+    font-size: 0.75rem;
+    background: #f1c40f22;
+    color: #f1c40f;
+    border: 1px solid #f1c40f44;
+    border-radius: 20px;
+    padding: 2px 10px;
+  }
+
+  #phase-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+    gap: 20px;
+    overflow-y: auto;
+  }
+
+  /* ── Buttons ── */
+  .btn {
+    width: 100%;
+    max-width: 380px;
+    padding: 18px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 14px;
+    cursor: pointer;
+    transition: opacity 0.15s, transform 0.1s;
+    letter-spacing: 1px;
+  }
+  .btn:active { transform: scale(0.97); opacity: 0.85; }
+
+  .btn-primary  { background: #f1c40f; color: #0d0d1a; }
+  .btn-green    { background: #2ecc71; color: #0d0d1a; }
+  .btn-red      { background: #e74c3c; color: #fff; }
+  .btn-blue     { background: #3498db; color: #fff; }
+  .btn-ghost    { background: #1e1e3a; color: #ccc; border: 1px solid #2a2a4a; }
+
+  /* ── Status messages ── */
+  .status-msg {
+    font-size: 1.1rem;
+    color: #8888aa;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  .phase-title {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #555;
+  }
+
+  /* ── Category tile ── */
+  .category-badge {
+    padding: 12px 28px;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  .cat-red    { background: #e74c3c22; color: #e74c3c; border: 2px solid #e74c3c66; }
+  .cat-blue   { background: #3498db22; color: #3498db; border: 2px solid #3498db66; }
+  .cat-green  { background: #2ecc7122; color: #2ecc71; border: 2px solid #2ecc7166; }
+  .cat-yellow { background: #f1c40f22; color: #f1c40f; border: 2px solid #f1c40f66; }
+  .cat-purple { background: #9b59b622; color: #9b59b6; border: 2px solid #9b59b666; }
+
+  .category-prompt {
+    font-size: 1rem;
+    color: #aaa;
+    text-align: center;
+  }
+
+  /* ── Answer input ── */
+  #answer-input {
+    width: 100%;
+    max-width: 380px;
+    padding: 18px 20px;
+    font-size: 1.2rem;
+    border-radius: 14px;
+    border: 2px solid #2a2a4a;
+    background: #1e1e3a;
+    color: #fff;
+    text-align: center;
+    outline: none;
+  }
+  #answer-input:focus { border-color: #3498db; }
+  #answer-input:disabled { opacity: 0.5; }
+
+  .locked-answer {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #2ecc71;
+    text-align: center;
+    padding: 16px 24px;
+    background: #2ecc7122;
+    border-radius: 14px;
+    border: 2px solid #2ecc7144;
+    max-width: 380px;
+    width: 100%;
+  }
+
+  /* ── Timer ── */
+  #ctrl-timer {
+    font-size: 3rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ── Path choice (directional arrows) ── */
+  .arrow-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    width: 100%;
+    max-width: 380px;
+  }
+
+  .arrow-btn {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    background: transparent;
+    border: 3px solid;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: transform 0.1s, opacity 0.15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .arrow-btn:active { transform: scale(0.93); opacity: 0.75; }
+
+  .arrow-cat {
+    font-size: 0.6rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* ── Items ── */
+  .item-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    max-width: 380px;
+  }
+
+  .item-btn {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 14px 18px;
+    border-radius: 14px;
+    border: 1px solid #3a3a6a;
+    background: #1a1a30;
+    cursor: pointer;
+    text-align: left;
+    transition: background 0.15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .item-btn:active { background: #252548; }
+
+  .item-icon { font-size: 1.6rem; flex-shrink: 0; }
+  .item-label { font-size: 0.9rem; font-weight: 700; color: #ddd; }
+  .item-desc  { font-size: 0.75rem; color: #666; margin-top: 2px; }
+
+  .cat-pick-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    width: 100%;
+    max-width: 380px;
+  }
+
+  .cat-pick-btn {
+    padding: 16px 10px;
+    border-radius: 12px;
+    border: 2px solid;
+    background: transparent;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: opacity 0.15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .cat-pick-btn:active { opacity: 0.7; }
+
+  /* ── Tile navigator ── */
+  .tile-focus-card {
+    width: 100%;
+    max-width: 380px;
+    padding: 22px 20px;
+    border-radius: 16px;
+    border: 3px solid;
+    text-align: center;
+  }
+  .tile-focus-name { font-size: 1.25rem; font-weight: 700; }
+  .tile-focus-cat  { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 6px; opacity: 0.85; }
+
+  /* ── Song list (host) ── */
+  .song-list {
+    width: 100%;
+    max-width: 440px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    overflow-y: auto;
+    max-height: 55dvh;
+  }
+
+  .song-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #1e1e3a;
+    border-radius: 10px;
+    padding: 12px 16px;
+    gap: 12px;
+  }
+
+  .song-info { flex: 1; min-width: 0; }
+  .song-info .s-title  { font-weight: 600; font-size: 0.95rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .song-info .s-artist { font-size: 0.8rem; color: #888; }
+
+  .play-btn {
+    flex-shrink: 0;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: #f1c40f;
+    color: #0d0d1a;
+    font-weight: 700;
+    font-size: 0.85rem;
+    border: none;
+    cursor: pointer;
+  }
+  .play-btn:active { opacity: 0.8; }
+
+  /* ── Mark correct (host) ── */
+  .reveal-song-info {
+    text-align: center;
+    padding: 12px 20px;
+    background: #1e1e3a;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 380px;
+  }
+  .reveal-song-info .rs-title  { font-size: 1.3rem; font-weight: 700; color: #f1c40f; }
+  .reveal-song-info .rs-artist { font-size: 0.95rem; color: #aaa; margin-top: 2px; }
+  .reveal-song-info .rs-year   { font-size: 0.85rem; color: #666; margin-top: 2px; }
+
+  .mark-list {
+    width: 100%;
+    max-width: 380px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-height: 45dvh;
+    overflow-y: auto;
+  }
+
+  .mark-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: #1e1e3a;
+    border-radius: 10px;
+    padding: 14px 16px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: border-color 0.15s, background 0.15s;
+    user-select: none;
+  }
+
+  .mark-item.checked {
+    border-color: #2ecc71;
+    background: #2ecc7114;
+  }
+
+  .mark-checkbox {
+    width: 28px; height: 28px; border-radius: 50%;
+    border: 2px solid #333;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .mark-item.checked .mark-checkbox { background: #2ecc71; border-color: #2ecc71; }
+
+  .mark-player-dot {
+    width: 32px; height: 32px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.9rem; flex-shrink: 0;
+  }
+
+  .mark-info { flex: 1; }
+  .mark-name { font-weight: 600; }
+  .mark-answer { font-size: 0.85rem; color: #aaa; margin-top: 2px; }
+
+  .error-toast {
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+    background: #e74c3c; color: #fff; padding: 10px 20px; border-radius: 10px;
+    font-size: 0.9rem; pointer-events: none;
+    animation: fadeout 3s forwards;
+  }
+  @keyframes fadeout { 0%{opacity:1} 70%{opacity:1} 100%{opacity:0} }
+
+  /* ── Eurovision controller theme ── */
+  #join-screen, #game-screen { position: relative; z-index: 1; }
+
+  #join-screen h1 {
+    background: linear-gradient(135deg, #f1c40f 0%, #ff4081 50%, #7c3aed 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: title-gradient 5s ease-in-out infinite;
+    filter: drop-shadow(0 0 12px rgba(241,196,15,.3));
+  }
+  @keyframes title-gradient {
+    0%,100% { background-position: 0% 50%; }
+    50%      { background-position: 100% 50%; }
+  }
+
+  #player-header {
+    background: rgba(12,12,36,.82) !important;
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,.08) !important;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, #f1c40f, #e67e22) !important;
+    box-shadow: 0 4px 24px rgba(241,196,15,.35);
+  }
+  .btn-green {
+    background: linear-gradient(135deg, #2ecc71, #1abc9c) !important;
+    box-shadow: 0 4px 20px rgba(46,204,113,.35);
+  }
+
+  #join-screen input[type=text] {
+    background: rgba(30,30,60,.8) !important;
+    border-color: rgba(124,58,237,.4) !important;
+    backdrop-filter: blur(8px);
+  }
+  #join-screen input[type=text]:focus { border-color: #f1c40f !important; }
+
+  #avatar-preview {
+    background: rgba(30,30,60,.8) !important;
+    border-color: rgba(124,58,237,.5) !important;
+    box-shadow: 0 0 30px rgba(124,58,237,.3);
+  }
+
+  .category-badge {
+    box-shadow: 0 0 20px currentColor;
+  }
+
+  .item-btn {
+    background: rgba(26,26,48,.9) !important;
+    border-color: rgba(255,255,255,.12) !important;
+    backdrop-filter: blur(8px);
+  }
+  .item-btn:active { background: rgba(37,37,72,.9) !important; }
+
+  .mark-item {
+    background: rgba(30,30,60,.85) !important;
+    backdrop-filter: blur(8px);
+  }
+  .mark-item.checked { background: rgba(46,204,113,.12) !important; }
+
+  .reveal-song-info {
+    background: rgba(30,30,60,.85) !important;
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(241,196,15,.2);
+    box-shadow: 0 0 30px rgba(241,196,15,.1);
+  }
+</style>
+</head>
+<body>
+
+<!-- Join screen -->
+<div id="join-screen">
+  <h1>★ Hitstar</h1>
+
+  <div id="avatar-preview">
+    <img id="avatar-img" alt="">
+    <span id="avatar-placeholder">?</span>
+  </div>
+
+  <div id="emoji-grid"></div>
+
+  <label id="upload-label">
+    📷 Upload photo
+    <input type="file" id="file-input" accept="image/*" style="display:none">
+  </label>
+
+  <input id="name-input" type="text" placeholder="Your name" maxlength="20" autocomplete="off" autocorrect="off" spellcheck="false">
+  <button class="btn btn-primary" onclick="joinGame()">Join Game</button>
+</div>
+
+<!-- Game screen -->
+<div id="game-screen">
+  <div id="player-header">
+    <div id="player-avatar"></div>
+    <div id="player-name-label"></div>
+    <div id="host-badge" style="display:none">👑 HOST</div>
+  </div>
+  <div id="phase-content"></div>
+</div>
+
+<script>
+const EMOJIS = ['🦊','🐸','🐼','🦁','🐯','🦄','🐧','🦋',
+                '🐙','👾','🤖','🎸','🎤','🔥','💎','🚀',
+                '🍕','🌵','🎃','🦈'];
+
+let selectedAvatar = null;
+let selectedEmoji  = null; // the raw emoji character, null when a photo is chosen
+
+function renderEmojiToDataUrl(emoji) {
+  const c = document.createElement('canvas');
+  c.width = 80; c.height = 80;
+  const ctx = c.getContext('2d');
+  ctx.fillStyle = '#1e1e3a';
+  ctx.fillRect(0, 0, 80, 80);
+  ctx.font = '52px serif';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(emoji, 40, 44);
+  return c.toDataURL('image/png');
+}
+
+function setAvatar(dataUrl) {
+  selectedAvatar = dataUrl;
+  const img = document.getElementById('avatar-img');
+  img.src = dataUrl;
+  img.style.display = 'block';
+  document.getElementById('avatar-placeholder').style.display = 'none';
+}
+
+function selectEmoji(emoji, btn) {
+  document.querySelectorAll('.emoji-btn').forEach(b => b.classList.remove('selected'));
+  btn?.classList.add('selected');
+  selectedEmoji = emoji;
+  setAvatar(renderEmojiToDataUrl(emoji));
+}
+
+function refreshEmojiGrid() {
+  const taken = state?.takenEmojis ?? [];
+  document.querySelectorAll('.emoji-btn').forEach(btn => {
+    const isTaken = taken.includes(btn.dataset.emoji);
+    btn.disabled = isTaken;
+    // If the selected emoji just got taken by someone else, deselect it
+    if (isTaken && btn.classList.contains('selected')) {
+      btn.classList.remove('selected');
+      selectedEmoji = null;
+      selectedAvatar = null;
+      document.getElementById('avatar-img').style.display = 'none';
+      document.getElementById('avatar-placeholder').style.display = '';
+    }
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const grid = document.getElementById('emoji-grid');
+  EMOJIS.forEach((emoji, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'emoji-btn';
+    btn.textContent = emoji;
+    btn.dataset.emoji = emoji;
+    btn.onclick = () => selectEmoji(emoji, btn);
+    grid.appendChild(btn);
+    if (i === 0) selectEmoji(emoji, btn);
+  });
+
+  document.getElementById('file-input').addEventListener('change', e => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = ev => {
+      const img = new Image();
+      img.onload = () => {
+        const c = document.createElement('canvas');
+        c.width = 80; c.height = 80;
+        const ctx = c.getContext('2d');
+        const size = Math.min(img.width, img.height);
+        ctx.drawImage(img, (img.width - size) / 2, (img.height - size) / 2, size, size, 0, 0, 80, 80);
+        document.querySelectorAll('.emoji-btn').forEach(b => b.classList.remove('selected'));
+        selectedEmoji = null; // photo upload clears emoji selection
+        setAvatar(c.toDataURL('image/jpeg', 0.85));
+      };
+      img.src = ev.target.result;
+    };
+    reader.readAsDataURL(file);
+  });
+});
+
+let myPlayerId = localStorage.getItem('playerId');
+let myIsHost = false;
+let state = null;
+let prevPhase = null;
+let markedCorrect = new Set();
+let timerInterval = null;
+let lockedAnswer = null;
+let draftAnswer  = '';
+let itemFlow = null; // { type, itemId, step?, tileId? }
+let confettiFired = false;
+
+const ws = new WebSocket(`ws://${location.host}/ws`);
+
+ws.onopen = () => {
+  if (myPlayerId) {
+    ws.send(JSON.stringify({ type: 'reconnect', playerId: myPlayerId }));
+  }
+};
+
+ws.onmessage = (e) => {
+  const msg = JSON.parse(e.data);
+  if (msg.type === 'joined') {
+    myPlayerId = msg.playerId;
+    myIsHost = msg.isHost;
+    localStorage.setItem('playerId', myPlayerId);
+    document.getElementById('join-screen').style.display = 'none';
+    document.getElementById('game-screen').style.display = 'flex';
+  } else if (msg.type === 'state') {
+    const incoming = msg.state;
+    if (incoming.phase === 'answering' && prevPhase !== 'answering') {
+      lockedAnswer = null;
+      draftAnswer  = '';
+    }
+    if (incoming.phase === 'reveal' && prevPhase !== 'reveal') {
+      markedCorrect = new Set();
+    }
+    if (incoming.phase !== prevPhase) {
+      itemFlow = null;
+    }
+    prevPhase = incoming.phase;
+    state = incoming;
+    render();
+    // Keep emoji grid in sync for players still on the join screen
+    if (document.getElementById('join-screen').style.display !== 'none') {
+      refreshEmojiGrid();
+    }
+  } else if (msg.type === 'error') {
+    if (msg.message === 'emoji_taken') {
+      showError('That emoji is already taken — pick another!');
+      refreshEmojiGrid(); // disable it immediately
+    } else if (msg.message === 'Player not found') {
+      localStorage.removeItem('playerId');
+      myPlayerId = null;
+      document.getElementById('join-screen').style.display = 'flex';
+      document.getElementById('game-screen').style.display = 'none';
+    } else {
+      showError(msg.message);
+    }
+  }
+};
+
+ws.onclose = () => setTimeout(() => location.reload(), 2000);
+
+function send(obj) { ws.send(JSON.stringify(obj)); }
+
+function joinGame() {
+  const name = document.getElementById('name-input').value.trim();
+  if (!name) return;
+  send({ type: 'join', name, avatarImage: selectedAvatar ?? undefined, avatarEmoji: selectedEmoji ?? undefined });
+}
+
+document.getElementById('name-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') joinGame();
+});
+
+// ── Rendering ──
+
+function myPlayer() {
+  return state?.players?.find(p => p.id === myPlayerId);
+}
+
+function myTile() {
+  const p = myPlayer();
+  return p ? state.board.tiles[p.tileId] : null;
+}
+
+function render() {
+  if (!state) return;
+
+  const p = myPlayer();
+  if (p) {
+    const av = document.getElementById('player-avatar');
+    if (p.avatarImage) {
+      av.style.background = 'none';
+      av.innerHTML = `<img src="${p.avatarImage}" style="width:100%;height:100%;object-fit:cover;border-radius:inherit">`;
+    } else {
+      av.innerHTML = p.name[0].toUpperCase();
+      av.style.background = p.avatarColor;
+    }
+    document.getElementById('player-name-label').textContent = p.name;
+    document.getElementById('host-badge').style.display = p.isHost ? 'block' : 'none';
+  }
+
+  const content = document.getElementById('phase-content');
+
+  // If the answer input is already on screen and the player hasn't locked in,
+  // skip re-rendering entirely — recreating the <input> resets the phone keyboard layout.
+  if (state.phase === 'answering' && lockedAnswer === null && document.getElementById('answer-input')) {
+    return;
+  }
+
+  content.innerHTML = '';
+
+  switch (state.phase) {
+    case 'lobby':          renderLobby(content); break;
+    case 'path_selection': renderPathSelection(content); break;
+    case 'playing':        renderPlaying(content); break;
+    case 'answering':      renderAnswering(content); break;
+    case 'reveal':         renderReveal(content); break;
+    case 'animating':      renderAnimating(content); break;
+    case 'advancing':      renderAdvancing(content); break;
+    case 'counting_down':  renderCountingDown(content); break;
+    case 'finished':       renderFinished(content); break;
+  }
+}
+
+function renderLobby(el) {
+  const count = state.players.length;
+  el.innerHTML = `<div class="phase-title">Lobby</div>
+    <div class="status-msg">${count} player${count !== 1 ? 's' : ''} joined<br>Waiting for the host to start...</div>`;
+
+  if (myIsHost) {
+    // Min year setting
+    const minYear = state.minYear ?? 1900;
+    const allSongs = state.board ? null : null; // song count computed client-side below
+    const songCount = countSongsFrom(minYear);
+    const settingWrap = document.createElement('div');
+    settingWrap.style.cssText = 'width:100%;margin:16px 0 8px;';
+    settingWrap.innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px">
+        <span style="font-size:0.85rem;color:#aaa">Songs from year</span>
+        <span id="minyear-val" style="font-weight:700;font-size:1.1rem">${minYear === 1900 ? 'Any' : minYear}</span>
+      </div>
+      <input id="minyear-slider" type="range" min="1900" max="2020" step="5" value="${minYear}"
+             style="width:100%;accent-color:#f1c40f">
+      <div id="minyear-count" style="font-size:0.78rem;color:#888;text-align:right;margin-top:4px">${songCount} songs available</div>
+    `;
+    el.appendChild(settingWrap);
+
+    const slider = settingWrap.querySelector('#minyear-slider');
+    const valLabel = settingWrap.querySelector('#minyear-val');
+    const countLabel = settingWrap.querySelector('#minyear-count');
+    slider.oninput = () => {
+      const y = parseInt(slider.value);
+      valLabel.textContent = y <= 1900 ? 'Any' : String(y);
+      countLabel.textContent = `${countSongsFrom(y)} songs available`;
+    };
+    slider.onchange = () => {
+      send({ type: 'set_min_year', year: parseInt(slider.value) });
+    };
+
+    const btn = document.createElement('button');
+    btn.className = 'btn btn-green';
+    btn.style.marginTop = '12px';
+    btn.textContent = `Start Game (${count} player${count !== 1 ? 's' : ''})`;
+    btn.onclick = () => send({ type: 'start_game' });
+    el.appendChild(btn);
+  } else {
+    const minYear = state.minYear ?? 1900;
+    el.insertAdjacentHTML('beforeend', `
+      <div style="margin-top:12px;font-size:0.85rem;color:#888">
+        Songs from: <strong style="color:#ccc">${minYear <= 1900 ? 'any year' : minYear}</strong>
+      </div>`);
+  }
+}
+
+// Count songs available from a given year (approximation using pre-computed breakpoints)
+function countSongsFrom(year) {
+  const breakpoints = [
+    [1900,560],[1950,555],[1955,550],[1960,533],[1965,517],[1970,486],
+    [1975,464],[1980,432],[1985,375],[1990,319],[1995,264],[2000,211],
+    [2005,163],[2010,114],[2015,62],[2020,21],
+  ];
+  let count = 560;
+  for (const [y, n] of breakpoints) {
+    if (year >= y) count = n;
+  }
+  return count;
+}
+
+function renderPathSelection(el) {
+  const tile = myTile();
+
+  // Already chose
+  if (tile && tile.id !== state.board.startTileId) {
+    el.innerHTML = `<div class="phase-title">Choose your path</div>
+      <div class="status-msg">✓ Path chosen<br>Waiting for others...</div>`;
+    return;
+  }
+
+  el.insertAdjacentHTML('beforeend', `
+    <div class="phase-title">Choose your starting path</div>
+    <div class="status-msg">Which way do you want to go?</div>
+  `);
+
+  const startTile = state.board.tiles[state.board.startTileId];
+  renderPathArrows(el, startTile, startTile.nextTiles);
+}
+
+const COLOR_HEX = {
+  red: '#e74c3c', blue: '#3498db', green: '#2ecc71',
+  yellow: '#f1c40f', purple: '#9b59b6',
+};
+
+const CAT_TO_COLOR = {
+  title: 'red', artist: 'blue', year_exact: 'green', year_range: 'purple', decade: 'yellow',
+};
+
+// Returns { cat, color } accounting for the player's categoryOverride
+function effectiveCatInfo(player, tile) {
+  const cat   = player?.categoryOverride ?? tile?.category;
+  const color = player?.categoryOverride ? (CAT_TO_COLOR[player.categoryOverride] ?? tile?.color) : tile?.color;
+  return { cat, color };
+}
+
+// General arrow renderer — onSelect(tileId) is called when a button is tapped
+function renderArrows(el, fromTile, targetTileIds, onSelect) {
+  const grid = document.createElement('div');
+  grid.className = 'arrow-grid';
+
+  for (const tileId of targetTileIds) {
+    const tile = state.board.tiles[tileId];
+    if (!tile) continue;
+
+    const angle = Math.round(Math.atan2(tile.y - fromTile.y, tile.x - fromTile.x) * 180 / Math.PI);
+    const hex = COLOR_HEX[tile.color] ?? '#888';
+
+    const btn = document.createElement('button');
+    btn.className = 'arrow-btn';
+    btn.style.borderColor = hex;
+    btn.style.color = hex;
+    btn.innerHTML = `
+      <svg viewBox="0 0 44 44" width="54" height="54"
+           style="transform:rotate(${angle}deg);display:block;overflow:visible">
+        <line x1="4" y1="22" x2="38" y2="22"
+              stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+        <polyline points="26,10 38,22 26,34"
+                  stroke="currentColor" stroke-width="4"
+                  stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+      <span class="arrow-cat">${catLabel(tile.category)}</span>
+    `;
+    btn.onclick = () => onSelect(tileId);
+    grid.appendChild(btn);
+  }
+
+  el.appendChild(grid);
+}
+
+// Path-choice wrapper — arrows that send choose_path
+function renderPathArrows(el, fromTile, choiceTileIds) {
+  renderArrows(el, fromTile, choiceTileIds, tileId => send({ type: 'choose_path', tileId }));
+}
+
+// All tiles connected to tileId in either direction
+function tileNeighbors(tileId) {
+  const tile = state.board.tiles[tileId];
+  const seen = new Set(tile?.nextTiles ?? []);
+  for (const [id, t] of Object.entries(state.board.tiles)) {
+    if (t.nextTiles.includes(tileId)) seen.add(id);
+  }
+  return [...seen];
+}
+
+function renderPlaying(el) {
+  const tile = myTile();
+  if (tile && tile.id !== state.board.endTileId && tile.id !== state.board.startTileId) {
+    el.insertAdjacentHTML('beforeend', `
+      <div class="category-badge cat-${tile.color}">${catLabel(tile.category)}</div>
+      <div class="category-prompt">Your category for this round</div>
+    `);
+  }
+
+  if (!myIsHost) {
+    el.insertAdjacentHTML('beforeend', `<div class="status-msg">Waiting for the host<br>to start the round...</div>`);
+    return;
+  }
+
+  if (!state.hasSongsLeft) {
+    el.insertAdjacentHTML('beforeend', `<div class="status-msg">No songs left!</div>`);
+    return;
+  }
+
+  const btn = document.createElement('button');
+  btn.className = 'btn btn-primary';
+  btn.textContent = '▶ Play Song';
+  btn.onclick = () => send({ type: 'start_round' });
+  el.appendChild(btn);
+}
+
+function renderAnswering(el) {
+  const tile = myTile();
+  const p    = myPlayer();
+  const myAns = state.answers.find(a => a.playerId === myPlayerId);
+
+  if (tile && tile.id !== state.board.startTileId && tile.id !== state.board.endTileId) {
+    const { cat, color } = effectiveCatInfo(p, tile);
+    el.insertAdjacentHTML('beforeend', `
+      <div class="category-badge cat-${color}">${catLabel(cat)}</div>
+      <div class="category-prompt">${catPrompt(cat)}</div>
+    `);
+  }
+
+  // Timer
+  const timerEl = document.createElement('div');
+  timerEl.id = 'ctrl-timer';
+  el.appendChild(timerEl);
+  startControllerTimer(timerEl);
+
+  if (lockedAnswer !== null) {
+    const locked = document.createElement('div');
+    locked.className = 'locked-answer';
+    locked.textContent = `✓ Locked in: "${lockedAnswer}"`;
+    el.appendChild(locked);
+    return;
+  }
+
+  const input = document.createElement('input');
+  input.type = 'text';
+  input.id = 'answer-input';
+  input.placeholder = 'Your answer...';
+  input.autocomplete = 'off';
+  input.autocorrect = 'off';
+  input.spellcheck = false;
+  input.value = draftAnswer;
+  input.oninput = () => { draftAnswer = input.value; };
+  el.appendChild(input);
+
+  const lockBtn = document.createElement('button');
+  lockBtn.className = 'btn btn-green';
+  lockBtn.textContent = '🔒 Lock In';
+  lockBtn.onclick = () => {
+    const answer = input.value.trim();
+    lockedAnswer = answer;
+    send({ type: 'lock_answer', answer });
+    render();
+  };
+  el.appendChild(lockBtn);
+
+  input.focus();
+}
+
+function startControllerTimer(el) {
+  if (timerInterval) clearInterval(timerInterval);
+  if (!state.timerEnd) { el.textContent = ''; return; }
+
+  const update = () => {
+    const remaining = Math.max(0, state.timerEnd - Date.now());
+    el.textContent = Math.ceil(remaining / 1000);
+    el.style.color = remaining < 10000 ? '#e74c3c' : remaining < 20000 ? '#f39c12' : '#2ecc71';
+    if (remaining === 0) clearInterval(timerInterval);
+  };
+  update();
+  timerInterval = setInterval(update, 200);
+}
+
+function renderReveal(el) {
+  const song = state.currentSong;
+
+  if (song?.title) {
+    el.insertAdjacentHTML('beforeend', `
+      <div class="reveal-song-info">
+        <div class="rs-title">${song.title}</div>
+        <div class="rs-artist">${song.artist}</div>
+        <div class="rs-year">${song.year}</div>
+      </div>
+    `);
+  }
+
+  if (!myIsHost) {
+    el.insertAdjacentHTML('beforeend', `
+      <div class="status-msg">See the answers on the TV screen.<br>Discuss, then the host will mark who got it right.</div>
+    `);
+    return;
+  }
+
+  // Host: mark correct
+  el.insertAdjacentHTML('beforeend', `<div class="phase-title">Who got it right?</div>`);
+
+  const list = document.createElement('div');
+  list.className = 'mark-list';
+
+  for (const ans of state.answers) {
+    const p = state.players.find(pl => pl.id === ans.playerId);
+    const isChecked = markedCorrect.has(ans.playerId);
+
+    const item = document.createElement('div');
+    item.className = 'mark-item' + (isChecked ? ' checked' : '');
+    item.innerHTML = `
+      <div class="mark-checkbox">${isChecked ? '✓' : ''}</div>
+      <div class="mark-player-dot" style="background:${p?.avatarColor ?? '#888'};overflow:hidden;padding:0">${p?.avatarImage ? `<img src="${p.avatarImage}" style="width:100%;height:100%;object-fit:cover">` : ans.playerName[0].toUpperCase()}</div>
+      <div class="mark-info">
+        <div class="mark-name">${ans.playerName}</div>
+        <div class="mark-answer">${ans.answer || '(no answer)'}</div>
+      </div>
+    `;
+    item.onclick = () => {
+      if (markedCorrect.has(ans.playerId)) markedCorrect.delete(ans.playerId);
+      else markedCorrect.add(ans.playerId);
+      renderReveal((() => { el.innerHTML = ''; return el; })());
+    };
+    list.appendChild(item);
+  }
+
+  el.appendChild(list);
+
+  const submitBtn = document.createElement('button');
+  submitBtn.className = 'btn btn-primary';
+  submitBtn.textContent = `Confirm (${markedCorrect.size} correct)`;
+  submitBtn.onclick = () => {
+    send({ type: 'mark_correct', playerIds: [...markedCorrect] });
+  };
+  el.appendChild(submitBtn);
+}
+
+function renderAnimating(el) {
+  el.insertAdjacentHTML('beforeend', `
+    <div style="font-size:2rem">🎲</div>
+    <div class="status-msg">Players are moving…</div>
+  `);
+}
+
+function renderAdvancing(el) {
+  const pending = state.pendingPathChoices ?? {};
+  const myChoices = pending[myPlayerId];
+
+  // Step 1: pick a path if branching
+  if (myChoices?.length) {
+    // Single path — auto-advance without requiring a tap
+    if (myChoices.length === 1) {
+      send({ type: 'choose_path', tileId: myChoices[0] });
+      return;
+    }
+    el.insertAdjacentHTML('beforeend', `
+      <div class="phase-title">Correct!</div>
+      <div class="status-msg">Pick your next path:</div>
+    `);
+    renderPathArrows(el, state.board.tiles[myPlayer().tileId], myChoices);
+    return;
+  }
+
+  if (Object.keys(pending).length > 0) {
+    el.insertAdjacentHTML('beforeend', `<div class="status-msg">Waiting for others<br>to choose their path…</div>`);
+    return;
+  }
+
+  // Step 2: active item flow (blocks ready button)
+  if (itemFlow) {
+    renderItemFlow(el);
+    return;
+  }
+
+  // Step 3: show inventory before ready button
+  const p = myPlayer();
+  const tile = myTile();
+  const { cat: effectiveCat, color: effectiveColor } = effectiveCatInfo(p, tile);
+
+  if (tile && tile.id !== state.board.endTileId && tile.id !== state.board.startTileId) {
+    const label = p?.categoryOverride ? `✦ ${catLabel(effectiveCat)} <span style="font-size:.7rem;opacity:.6">(overridden)</span>` : catLabel(effectiveCat);
+    el.insertAdjacentHTML('beforeend', `
+      <div class="phase-title">Your next category</div>
+      <div class="category-badge cat-${effectiveColor}">${label}</div>
+    `);
+  }
+
+  if (p?.inventory?.length > 0) {
+    el.insertAdjacentHTML('beforeend', `<div class="phase-title" style="margin-top:8px">Your items</div>`);
+    const list = document.createElement('div');
+    list.className = 'item-list';
+    for (const item of p.inventory) {
+      const btn = document.createElement('button');
+      btn.className = 'item-btn';
+      btn.innerHTML = `
+        <span class="item-icon">${itemIcon(item.type)}</span>
+        <div>
+          <div class="item-label">${itemLabel(item.type)}</div>
+          <div class="item-desc">${itemDesc(item.type)}</div>
+        </div>
+      `;
+      btn.onclick = () => {
+        if (item.type === 'change_tile') {
+          const startId = myPlayer()?.tileId ?? state.board.startTileId;
+          itemFlow = { type: 'change_tile', itemId: item.id, step: 'pick_tile', tileId: startId };
+          send({ type: 'tile_cursor', tileId: startId });
+        } else {
+          itemFlow = { type: item.type, itemId: item.id, step: 'pick_category' };
+        }
+        render();
+      };
+      list.appendChild(btn);
+    }
+    el.appendChild(list);
+  }
+
+  // Step 4: ready button
+  const iAmReady = state.readyPlayerIds?.includes(myPlayerId);
+  const readyCount = state.readyPlayerIds?.length ?? 0;
+  const totalCount = state.players.filter(pl => pl.connected).length;
+
+  if (iAmReady) {
+    el.insertAdjacentHTML('beforeend', `
+      <div class="status-msg" style="color:#2ecc71">✓ You're ready!<br><span style="color:#555">${readyCount} / ${totalCount} ready</span></div>
+    `);
+  } else {
+    const btn = document.createElement('button');
+    btn.className = 'btn btn-green';
+    btn.textContent = '✓ Ready';
+    btn.onclick = () => send({ type: 'ready' });
+    el.appendChild(btn);
+    if (readyCount > 0) {
+      el.insertAdjacentHTML('beforeend', `<div class="status-msg">${readyCount} / ${totalCount} ready</div>`);
+    }
+  }
+}
+
+// ── Item flow ────────────────────────────────────────────────────
+
+const CATEGORIES = [
+  { cat: 'title',      color: 'red',    label: 'Title' },
+  { cat: 'artist',     color: 'blue',   label: 'Artist' },
+  { cat: 'year_exact', color: 'green',  label: 'Exact Year' },
+  { cat: 'year_range', color: 'purple', label: 'Year ±3' },
+  { cat: 'decade',     color: 'yellow', label: 'Decade' },
+];
+
+function renderItemFlow(el) {
+  const cancelBtn = () => {
+    const b = document.createElement('button');
+    b.className = 'btn btn-ghost';
+    b.style.marginTop = '4px';
+    b.textContent = 'Cancel';
+    b.onclick = () => {
+      if (itemFlow?.type === 'change_tile') send({ type: 'tile_cursor', tileId: null });
+      itemFlow = null;
+      render();
+    };
+    return b;
+  };
+
+  if (itemFlow.type === 'change_category') {
+    el.insertAdjacentHTML('beforeend', `
+      <div class="phase-title">${itemIcon('change_category')} Choose your category</div>
+      <div class="status-msg">Replaces your category for this round</div>
+    `);
+    const grid = document.createElement('div');
+    grid.className = 'cat-pick-grid';
+    for (const { cat, color, label } of CATEGORIES) {
+      const b = document.createElement('button');
+      b.className = `cat-pick-btn`;
+      b.style.borderColor = COLOR_HEX[color];
+      b.style.color = COLOR_HEX[color];
+      b.textContent = label;
+      b.onclick = () => {
+        send({ type: 'use_item_change_category', itemId: itemFlow.itemId, newCategory: cat });
+        itemFlow = null;
+      };
+      grid.appendChild(b);
+    }
+    el.appendChild(grid);
+    el.appendChild(cancelBtn());
+
+  } else if (itemFlow.type === 'change_tile' && itemFlow.step === 'pick_tile') {
+    const focused = state.board.tiles[itemFlow.tileId];
+    const hex = COLOR_HEX[focused?.color] ?? '#888';
+    const isPickable = itemFlow.tileId !== state.board.startTileId
+                    && itemFlow.tileId !== state.board.endTileId;
+
+    el.insertAdjacentHTML('beforeend', `<div class="phase-title">${itemIcon('change_tile')} Navigate to a tile</div>`);
+
+    // Focused tile card
+    const card = document.createElement('div');
+    card.className = 'tile-focus-card';
+    card.style.borderColor = hex;
+    card.style.color = hex;
+    card.innerHTML = `
+      <div class="tile-focus-name">Tile ${focused?.label ?? '?'}</div>
+      <div class="tile-focus-cat">${catLabel(focused?.category)}</div>
+    `;
+    el.appendChild(card);
+
+    // Directional arrows to neighbors
+    const neighbors = tileNeighbors(itemFlow.tileId);
+    renderArrows(el, focused, neighbors, tileId => {
+      itemFlow.tileId = tileId;
+      send({ type: 'tile_cursor', tileId });
+      render();
+    });
+
+    // Pick button (only for non-start/end tiles)
+    if (isPickable) {
+      const pickBtn = document.createElement('button');
+      pickBtn.className = 'btn btn-primary';
+      pickBtn.textContent = '✓ Pick this tile';
+      pickBtn.onclick = () => { itemFlow.step = 'pick_category'; render(); };
+      el.appendChild(pickBtn);
+    }
+
+    el.appendChild(cancelBtn());
+
+  } else if (itemFlow.type === 'change_tile' && itemFlow.step === 'pick_category') {
+    const target = state.board.tiles[itemFlow.tileId];
+    el.insertAdjacentHTML('beforeend', `
+      <div class="phase-title">${itemIcon('change_tile')} Change tile to what?</div>
+      <div class="status-msg">Currently: <span style="color:${COLOR_HEX[target?.color]}">${catLabel(target?.category)}</span></div>
+    `);
+    const grid = document.createElement('div');
+    grid.className = 'cat-pick-grid';
+    for (const { cat, color, label } of CATEGORIES) {
+      const b = document.createElement('button');
+      b.className = 'cat-pick-btn';
+      b.style.borderColor = COLOR_HEX[color];
+      b.style.color = COLOR_HEX[color];
+      b.textContent = label;
+      b.onclick = () => {
+        send({ type: 'use_item_change_tile', itemId: itemFlow.itemId, tileId: itemFlow.tileId, newCategory: cat });
+        send({ type: 'tile_cursor', tileId: null });
+        itemFlow = null;
+      };
+      grid.appendChild(b);
+    }
+    el.appendChild(grid);
+    const back = document.createElement('button');
+    back.className = 'btn btn-ghost';
+    back.style.marginTop = '4px';
+    back.textContent = '← Back';
+    back.onclick = () => { itemFlow.step = 'pick_tile'; render(); }; // tileId stays set
+    el.appendChild(back);
+    el.appendChild(cancelBtn());
+  }
+}
+
+function itemIcon(type) {
+  return { change_category: '🔀', change_tile: '🗺️' }[type] ?? '🎁';
+}
+function itemLabel(type) {
+  return { change_category: 'Change My Category', change_tile: 'Change a Tile' }[type] ?? 'Item';
+}
+function itemDesc(type) {
+  return {
+    change_category: 'Pick a different category to answer this round',
+    change_tile: 'Change any tile’s category on the board',
+  }[type] ?? '';
+}
+
+function renderCountingDown(el) {
+  const tile = myTile();
+  const p    = myPlayer();
+  if (tile && tile.id !== state.board.endTileId && tile.id !== state.board.startTileId) {
+    const { cat, color } = effectiveCatInfo(p, tile);
+    el.insertAdjacentHTML('beforeend', `
+      <div class="phase-title">Get ready to answer</div>
+      <div class="category-badge cat-${color}">${catLabel(cat)}</div>
+    `);
+  }
+
+  const timerEl = document.createElement('div');
+  timerEl.id = 'ctrl-timer';
+  el.appendChild(timerEl);
+
+  if (timerInterval) clearInterval(timerInterval);
+  const tick = () => {
+    const s = Math.ceil(Math.max(0, state.countdownEnd - Date.now()) / 1000);
+    timerEl.textContent = s || '♪';
+    timerEl.style.color = '#f1c40f';
+  };
+  tick();
+  timerInterval = setInterval(tick, 100);
+}
+
+function renderFinished(el) {
+  const winners = state.players.filter(p => p.tileId === state.board.endTileId);
+  const isWinner = winners.some(p => p.id === myPlayerId);
+
+  if (isWinner && !confettiFired) {
+    confettiFired = true;
+    confetti({ particleCount: 120, spread: 80, origin: { y: 0.6 },
+      colors: ['#f1c40f', '#e74c3c', '#3498db', '#2ecc71', '#9b59b6', '#fff'] });
+  }
+
+  el.insertAdjacentHTML('beforeend', `
+    <div style="font-size:4rem">${isWinner ? '🏆' : '🎉'}</div>
+    <div style="font-size:1.5rem;font-weight:700;color:#f1c40f">
+      ${isWinner ? 'You won!' : 'Game Over!'}
+    </div>
+  `);
+
+  for (const p of winners) {
+    const avatarInner = p.avatarImage
+      ? `<img src="${p.avatarImage}" style="width:100%;height:100%;object-fit:cover;border-radius:50%">`
+      : `<span style="font-weight:700;font-size:1.1rem">${p.name[0].toUpperCase()}</span>`;
+    const avatarBg = p.avatarImage ? 'transparent' : p.avatarColor;
+    const div = document.createElement('div');
+    div.style.cssText = 'display:flex;align-items:center;gap:14px;font-size:1.2rem;font-weight:700';
+    div.innerHTML = `
+      <div style="width:48px;height:48px;border-radius:50%;background:${avatarBg};border:3px solid ${p.avatarColor};display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0">${avatarInner}</div>
+      ${p.name}
+    `;
+    el.appendChild(div);
+  }
+}
+
+// ── Helpers ──
+
+function catLabel(cat) {
+  return { title: 'Title', artist: 'Artist', year_exact: 'Exact Year', year_range: 'Year ±3', decade: 'Decade' }[cat] ?? cat;
+}
+
+function catPrompt(cat) {
+  return {
+    title: 'What is the song title?',
+    artist: 'Who is the artist?',
+    year_exact: 'What exact year was it released?',
+    year_range: 'What year? (±3 counts)',
+    decade: 'What decade is this from?',
+  }[cat] ?? 'Answer the question';
+}
+
+function showError(msg) {
+  const toast = document.createElement('div');
+  toast.className = 'error-toast';
+  toast.textContent = msg;
+  document.body.appendChild(toast);
+  setTimeout(() => toast.remove(), 3000);
+}
+</script>
+</body>
+</html>
